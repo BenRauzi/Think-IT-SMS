@@ -1,4 +1,16 @@
-<p>
-  login works!
-</p>
-<a routerLink="/routing">Routing</a>
+<form [formGroup]="form">
+  <fieldset>
+      <legend>Login</legend>
+      <div class="form-field">
+          <label>Email:</label>
+          <input name="email" formControlName="email" autocomplete="project-thing login email">
+      </div>
+      <div class="form-field">
+          <label>Password:</label>
+          <input name="password" formControlName="password" type="password" autocomplete="project-thing login password">
+      </div>
+  </fieldset>
+  <div class="form-buttons">
+      <button class="button button-primary" (click)="login()">Login</button>
+  </div>
+</form>

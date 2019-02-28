@@ -8,7 +8,7 @@ import { RoutingTesterComponent } from './routing-tester/routing-tester.componen
 const routes: Routes = [
   { path:'login', component:LoginComponent, data:{title:"Login"} },
   { path:'routing', component:RoutingTesterComponent },
-  // { path:'', redirectTo:'login',pathMatch:"full" },
+  { path:'', redirectTo:'login',pathMatch:"full" },
   { path:'**', component:LoginComponent }
 ];
 
