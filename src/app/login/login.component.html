@@ -1,16 +1,15 @@
 <form [formGroup]="form">
-  <fieldset>
-      <legend>Login</legend>
-      <div class="form-field">
-          <label>Email:</label>
-          <input name="email" formControlName="email" autocomplete="project-thing login email">
-      </div>
-      <div class="form-field">
-          <label>Password:</label>
-          <input name="password" formControlName="password" type="password" autocomplete="project-thing login password">
-      </div>
-  </fieldset>
-  <div class="form-buttons">
-      <button class="button button-primary" (click)="login()">Login</button>
-  </div>
-</form>
+    <fieldset>
+        <mat-form-field color="accent">
+        <!-- <mat-label>Email</mat-label> -->
+        <input matInput placeholder="email" name="email" formControlName="email">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="password" name="password" formControlName="password" type="password">
+        </mat-form-field>
+    </fieldset>
+    <div class="form-buttons">
+        <button mat-button mat-raised-button color="primary" class="button button-primary" (click)="login()">Login</button>
+    </div>
+    <button mat-button mat-raised-button color="accent" class="button button-primary" (click)="verify()">Verify</button>
+</form> 
