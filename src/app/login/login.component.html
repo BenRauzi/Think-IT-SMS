@@ -1,15 +1,16 @@
 <form [formGroup]="form">
     <fieldset>
-        <mat-form-field color="accent">
+        <mat-form-field color="accent" appearance="outline">
         <!-- <mat-label>Email</mat-label> -->
         <input matInput placeholder="email" name="email" formControlName="email">
+        <mat-label>Email</mat-label>
+        <mat-error>{{getErrorMessage('email')}}</mat-error>
         </mat-form-field>
-        <mat-form-field>
-            <input matInput placeholder="password" name="password" formControlName="password" type="password">
+        <mat-form-field appearance="outline">
+            <input matInput name="password" formControlName="password" type="password">
+            <mat-label>Password</mat-label>
+            <mat-error>{{getErrorMessage('password')}}</mat-error>
         </mat-form-field>
     </fieldset>
-    <div class="form-buttons">
-        <button mat-button mat-raised-button color="primary" class="button button-primary" (click)="login()">Login</button>
-    </div>
-    <button mat-button mat-raised-button color="accent" class="button button-primary" (click)="verify()">Verify</button>
+    <button mat-button mat-raised-button color="primary" class="button button-primary" [disabled]="!form.valid" (click)="login()">Login</button>
 </form> 

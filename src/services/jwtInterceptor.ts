@@ -1,7 +1,7 @@
-import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HttpResponse, HttpErrorResponse } from '../../node_modules/@angular/common/http';
-import { Injector, Injectable } from '../../node_modules/@angular/core';
-import { Router } from '../../node_modules/@angular/router';
-import { Observable } from '../../node_modules/rxjs';
+import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HttpResponse, HttpErrorResponse } from '@angular/common/http';
+import { Injector, Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators'
 @Injectable()
 export class JwtInterceptor implements HttpInterceptor{
