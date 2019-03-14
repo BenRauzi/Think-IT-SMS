@@ -8,7 +8,7 @@ import { DashboardComponent} from './dashboard/dashboard.component';
 
 const routes: Routes = [
   { path:'login', component:LoginComponent, data:{title:"Login"} },
-  { path:'routing', component:RoutingTesterComponent },
+  { path:'routing', component:RoutingTesterComponent, data:{title:"Routing"} },
   { path:'dashboard', component: DashboardComponent, data:{title:"Dashboard"}},
   { path:'', redirectTo:'login',pathMatch:"full" },
   { path:'**', component:LoginComponent }
