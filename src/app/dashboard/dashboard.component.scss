@@ -78,50 +78,44 @@ nav{
                     border-radius: 5px;
                 }
             }
-            ul {
-                opacity: 0;
-                display: block;
-                font-size: 16px;
-                margin: 4px;
-                margin-left: 0px;
-                min-width: 114px;
-                height: 100%;
-                li {
-                    background-color: #515051;
-                    margin-bottom: -5%;
-                    padding-right: 10%;
-                    border-radius: 0px;
-                    text-align: center;
-                }
-            }
         }
     }
 }
-.sidenav {
-    height: 100%; /* 100% Full-height */
-    width: 0; /* 0 width - change this with JavaScript */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Stay on top */
-    top: 1; /* Stay at the top */
+.subNav {
+    height: 100%; 
+    width: 0; 
+    position: fixed; 
+    z-index: 1; 
+    top: 1; 
     left: 5;
     margin-left: 11%;
-    background-color: #515051; /* Black*/
-    overflow-x: hidden; /* Disable horizontal scroll */
-    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+    background-color: #515051; 
+    overflow-x: hidden; 
+    transition: 0.5s; 
     padding-top: 10px;
     a {
         padding: 8px 8px 8px 32px;
         text-decoration: none;
         color: #b0b1b4;
         display: block;
-        transition: 0.3s;
+        i {
+            padding-right: 5px;
+        }
         &:hover {
             color: #f1f1f1;
         }
     }
     .closebtn {
         position: absolute;
+        opacity: 0;
+        transition: 0.5s ease-out;
         right: 25px;
+    }
+    &:hover{
+        .closebtn{
+            opacity: 100;
+            transition: 0.1s all ease-in;
+        }
     }
   }
   
@@ -129,10 +123,4 @@ nav{
   #main {
     transition: margin-left .5s;
     padding-left: 11.5%;
-  }
-  
-  /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
-  @media screen and (max-height: 450px) {
-    .sidenav {padding-top: 15px;}
-    .sidenav a {font-size: 18px;}
   }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
+import { MatMenuItem } from '@angular/material';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,20 +12,34 @@ export class DashboardComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log(2)
-  }
-  test(){
-    console.log(1)
   }
 
   openNav(menu) {
-    document.getElementById("mySidenav").style.width = "10%";
+    const menuItems = ["teacher", "asd","Oof"]
+    document.getElementById("sideNav").style.width = "10%";
     document.getElementById("main").style.marginLeft = "10%";
+
+    [].forEach.call(document.querySelectorAll('.other'), function (el) {
+      el.style.display = 'none';
+    });
+    menuItems.forEach( function (item) {
+      if (item != menu) {
+        [].forEach.call(document.querySelectorAll("." + item), function (el) {
+          el.style.display = 'none';
+        });
+      } else {
+        [].forEach.call(document.querySelectorAll("." + item), function (el) {
+          el.style.display = 'block';
+        });
+      }
+    })
   }
 
   closeNav() {
-    document.getElementById("mySidenav").style.width = "0";
-    document.getElementById("main").style.marginLeft = "0%";
+    if ( document.getElementById("sideNav").style.width != "") {
+      document.getElementById("sideNav").style.width = "0";
+      document.getElementById("main").style.marginLeft = "0%";
+    }
   }
 
 }

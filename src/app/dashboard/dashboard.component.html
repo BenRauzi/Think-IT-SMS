@@ -27,28 +27,33 @@
       </ul>
       -->
       
-      <a routerLink="/login"><li><i class="fas fa-users"></i> Return</li></a>
-      <a class="oof" (mouseover)="openNav(1)"><li><i class="fas fa-users"></i> Return1</li></a> 
+      <a (mouseover)="closeNav()" href="/login"><li><i class="fas fa-users"></i> Return</li></a>
+      <a (mouseover)="openNav('teacher')"><li><i class="fas fa-users"></i> Return1</li></a> 
+      <a (mouseover)="openNav('asd')"><li><i class="fas fa-users"></i> Return2</li></a> 
+      <a (mouseover)="openNav('Oof')"><li><i class="fas fa-users"></i> Return2</li></a> 
 
       <hr><p>Teacher</p><hr>
-      <span (mouseover)="openNav(2)">open</span>
 
       </ul>
   
     </div>
 
-    <div id="mySidenav" class="sidenav">
+    <div id="sideNav" class="subNav">
         <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
-        <a href="#">About</a>
-        <a href="#">Services</a>
-        <a href="#">Clients</a>
-        <a href="#">Contact</a>
+        <a href="#" class="teacher">About</a>
+        <a href="#" class='teacher'>Services</a>
+        <a href="#" class='asd'>Clients1</a>
+        <a href="#" class='asd'>Clients2</a>
+        <a href="#" class='asd'>Clients3</a>
+        <a href="#" class='asd'>Clients</a>
+        <a href="#" class='asd'>Clients</a>
+        <a href="#" class='Oof'>Contact</a>
       </div>
 
       
     <a routerLink="/login">Login</a>
 
-    <div id="main">
+    <div id="main" (mouseover)="closeNav()">
       asdddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
     </div>
 
