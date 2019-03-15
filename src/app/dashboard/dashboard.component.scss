@@ -118,8 +118,8 @@ nav{
         }
     }
   }
-  
-  /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+
+  // To make items move to right when the sub menu opens make a div with this as the id.
   #main {
     transition: margin-left .5s;
     padding-left: 11.5%;
