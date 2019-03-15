@@ -28,12 +28,31 @@
       -->
       
       <a routerLink="/login"><li><i class="fas fa-users"></i> Return</li></a>
-      <a routerLink="/login"><li><i class="fas fa-users"></i> Return</li></a> 
+      <a class="oof" (mouseover)="openNav(1)"><li><i class="fas fa-users"></i> Return1</li></a> 
 
       <hr><p>Teacher</p><hr>
-      
+      <span (mouseover)="openNav(2)">open</span>
+
       </ul>
+  
     </div>
+
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Clients</a>
+        <a href="#">Contact</a>
+      </div>
+
+      
     <a routerLink="/login">Login</a>
+
+    <div id="main">
+      asdddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
+    </div>
+
+    
+   
 
 </body>
