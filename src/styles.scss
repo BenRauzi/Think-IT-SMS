@@ -13,19 +13,35 @@ $candy-app-theme: mat-light-theme($candy-app-primary, $candy-app-accent, $candy-
 // that you are using.
 @include angular-material-theme($candy-app-theme);
 
+//Import the sniglet font
+@import url('https://fonts.googleapis.com/css?family=Sniglet|Srisakdi|Roboto|Open+Sans');
+
+//Variables for the variable colours and items
 :root{
     --primary-colour: #282b26;
+    --secondary-colour: #eeeeee;
+    --text-colour1: #ffffff;
 }
 
 header{
     font-size: 40px;
-    text-align: center;
-    padding-bottom: 10px;
-    padding-top: 10px;
+    text-align: left;
+    padding-left: 50px;
+    padding-bottom: 2px;
+    padding-top: 2px;
     background-color: var(--primary-colour);
-    color: #fff;
+    color: var(--text-colour1);
+    font-family: 'Sriskadi', cursive;
+    .notbold{
+        padding-left: 10px;
+        font-family: 'sniglet', cursive;
+        font-size: 30px;
+        font-weight: lighter;
+    }
 }
 body{
-margin: 0px;
-background-color: #c9c9c9;
+    margin: 0px;
+    background-color: var(--secondary-colour);
+    direction: ltr;
+    font-family: 'Open Sans', sans-serif;
 }
