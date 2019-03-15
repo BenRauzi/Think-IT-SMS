@@ -1,0 +1,22 @@
+nav{
+    padding: 0px;
+    margin: 0px;
+    width: 15%;
+    min-height: 92.8vh;
+    background-color: #494949;
+    text-align: center;
+    a{
+        text-align: center;
+        display: block;
+    }
+    a:hover{
+        background-color: #242424;
+    }
+    i{
+        padding: 10px;
+        text-align: center;
+        color: white;
+        font-size: 100px;
+        border-bottom: 2px solid black;
+    }
+}

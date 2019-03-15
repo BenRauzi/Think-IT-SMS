@@ -13,8 +13,14 @@ $candy-app-theme: mat-light-theme($candy-app-primary, $candy-app-accent, $candy-
 // that you are using.
 @include angular-material-theme($candy-app-theme);
 
+//Import the sniglet font
+@import url('https://fonts.googleapis.com/css?family=Sniglet|Srisakdi|Roboto|Open+Sans');
+
+//Variables for the variable colours and items
 :root{
     --primary-colour: #282b26;
+    --secondary-colour: #eeeeee;
+    --text-colour1: #ffffff;
 }
 
 header{
