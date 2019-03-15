@@ -51,9 +51,9 @@ nav{
     }
     ul{
         padding-left: 0px;
-
         a {
             text-decoration: none;
+            transition: 200ms all ease-in-out;
             li{
                 color: #b0b1b4;
                 width: 80%;
@@ -65,10 +65,33 @@ nav{
                 text-align: left;
                 font-size: 15px;
                 padding-left:5px;
+                transition: 200ms all ease-in-out;
+                opacity: 100;
+
                 &:hover {
+                    ul{
+                        opacity:100 !important;
+                        transition: 200ms all ease-in-out;
+                    }
                     color: white;
                     background-color: #41a7b8;
                     border-radius: 5px;
+                }
+            }
+            ul {
+                opacity: 0;
+                display: block;
+                font-size: 16px;
+                margin: 4px;
+                margin-left: 0px;
+                min-width: 114px;
+                height: 100%;
+                li {
+                    background-color: #515051;
+                    margin-bottom: -5%;
+                    padding-right: 10%;
+                    border-radius: 0px;
+                    text-align: center;
                 }
             }
         }
