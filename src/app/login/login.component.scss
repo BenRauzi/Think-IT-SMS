@@ -1,12 +1,5 @@
-mat-label{
-    color: #002b53;
-}
-mat-error{
-    padding-top: 25px;
-}
-.email{
-    padding-top: 94px;
-}
+
+
 fieldset{
     background-color: White;
     width: 450px;
@@ -27,6 +20,15 @@ fieldset{
         text-align: left;
         display: block;
         font-family: 'open sans', sans-serif; 
+        mat-error{
+            padding-top: 25px;
+        }
+        mat-label{
+            color: #002b53;
+        }
+        .email{
+            padding-top: 94px;
+        }
     }
     h1{
         font-weight: 100;
