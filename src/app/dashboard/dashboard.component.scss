@@ -20,3 +20,52 @@ nav{
         border-bottom: 2px solid black;
     }
 }
+
+
+.navbar {
+    background: #424142; 
+    width: 11%;
+    height: 100%;
+    position: fixed;
+    font-size: 18px;
+    color: white;
+    text-align: center;
+    hr{
+        border-color: #41a7b8;
+        width: 80%;
+        margin: auto;
+        margin-top: 5px;
+    }
+    img{
+        margin-top: 20px;
+        margin-bottom: -20px;
+        width: 50%;
+        border-radius: 50%;
+    }
+    p{
+        color: white;
+        text-align: center;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        font-size: 13px;
+    }
+    a {
+        li{
+            color: #b0b1b4;
+            width: 80%;
+            height: 40px;
+            margin: auto;
+            margin-top: 5px;
+            line-height: 40px;
+            list-style: none;
+            text-align: left;
+            font-size: 15px;
+            padding-left:5px;
+            &:hover {
+                color: white;
+                background-color: #41a7b8;
+                border-radius: 5px;
+            }
+        }
+    }
+}
