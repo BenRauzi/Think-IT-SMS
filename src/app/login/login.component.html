@@ -5,11 +5,11 @@
         <!-- <mat-label>Email</mat-label> -->
         <input matInput placeholder="email" name="email" formControlName="email">
         <mat-label>Email</mat-label>
-        <mat-error>{{getErrorMessage('email')}}</mat-error>
+        <mat-error class="email">{{getErrorMessage('email')}}</mat-error>
         </mat-form-field>
         <mat-form-field appearance="outline">
             <input matInput name="password" formControlName="password" type="password">
-            <mat-label>Password</mat-label>
+            <mat-label class="password">Password</mat-label>
             <mat-error>{{getErrorMessage('password')}}</mat-error>
         </mat-form-field>
         <div class="BelowLogin">
