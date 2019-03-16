@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   }
 
   getErrorMessage(control) {
-    return this.form.controls[control].hasError('required') ? 'You must enter a value' :
+    return this.form.controls[control].hasError('required') ? 'You must enter a password' :
         this.form.controls[control].hasError('email') ? 'Not a valid email' :
             '';
   }
