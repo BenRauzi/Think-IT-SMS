@@ -3,6 +3,44 @@ mat-label{
 }
 fieldset{
     background-color: White;
-    width: 50%;
-    margin: auto;
+    width: 450px;
+    max-width: 100%;
+    position: relative;
+    min-height: 500px;
+    margin: 0 auto;
+    margin-top: 9%;
+    border: 1px solid #dadce0;
+    display: block;
+    border-radius: 2%;
+    mat-form-field{
+        box-sizing: inherit;
+        height: 28px;
+        width: 336px;
+        padding: 20px 60px 50px;
+        margin: 1px;
+        text-align: left;
+        display: block;
+        font-family: 'open sans', sans-serif; 
+    }
+    h1{
+        font-weight: 100;
+        text-align: center;
+    }
+    .BelowLogin{
+        margin-top: 30px;
+        button{
+            box-sizing: inherit;
+            margin-right: 60px;
+            float: right;        
+        }
+        .ForgotPass{
+            color: #535359;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 10px;
+            margin-left: 60px;
+        }
+    }
+}
+body{
 }
