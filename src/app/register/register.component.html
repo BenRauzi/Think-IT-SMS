@@ -1,0 +1,30 @@
+<form [formGroup]="form">
+  <fieldset>
+      <mat-form-field color="accent" appearance="outline">
+      <input matInput placeholder="username" name="username" formControlName="username" required>
+      <mat-label>Username</mat-label>
+      <mat-error>{{getErrorMessage('username')}}</mat-error>
+      </mat-form-field>
+      <mat-form-field color="accent" appearance="outline">
+      <input matInput placeholder="name" name="name" formControlName="name" required>
+      <mat-label>Name</mat-label>
+      <mat-error>{{getErrorMessage('name')}}</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+          <input matInput name="password" formControlName="password" type="password" required>
+          <mat-label>Password</mat-label>
+          <mat-error>{{getErrorMessage('password')}}</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-select Placeholder="Role" name="role" formControlName="role" required>
+          <mat-option *ngFor="let role of roles" [value]="role.value">
+            {{role.viewValue}}
+          </mat-option>
+        </mat-select>
+        <mat-label>Role</mat-label>
+        <mat-error>{{getErrorMessage('role')}}</mat-error>
+      </mat-form-field>
+  </fieldset>
+  <button mat-button mat-raised-button color="primary" class="button button-primary" [disabled]="!form.valid" (click)="register()">Login</button>
+</form>
+<a routerLink="/login">Login</a>
