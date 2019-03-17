@@ -123,7 +123,7 @@ nav{
   // To make items move to right when the sub menu opens make a div with this as the id.
   #main {
     transition: margin-left .5s;
-    width:89%;
+    width:88%;
     max-width: 89%;
     padding-left: 11.5%;
     padding-top: 2.25%;
@@ -132,7 +132,7 @@ nav{
   }
 
 #ribbon {
-    background-color: #424142;
+    background-color: #515051;
     height: 35px;
     padding-left: 11%;
     margin-bottom: 0.5%;
@@ -159,9 +159,11 @@ nav{
         text-align: center;
         padding: 8px 16px;
         text-decoration: none;
+
+        &:hover {
+            color: #f1f1f1;
+        }
       }
-      
-      /* Change the link color to #111 (black) on hover */
 }
 
 .main {
