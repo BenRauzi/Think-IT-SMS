@@ -16,15 +16,16 @@ export class AuthService{
 
     }
 
-    async login(email: string, password: string){
-
-        if(email && password){
+    async login(username: string, password: string){
+        console.log("test");
+        if(username && password){
             const options = {headers: new HttpHeaders({
                 'Content-Type': 'application/json',
             })};
-            this.http.post('http://localhost:3000/api/login',{email: email, password: password}, options).subscribe((data: TokenDto) => {
+            this.http.post('http://localhost:3000/api/login',{username: username, password: password}, options).subscribe((data: TokenDto) => {
                 if(data.token){
                     localStorage.setItem('pt-usertoken', data.token);
+                    console.log("time to rerout!");
                     this.router.navigate(['/dashboard']);
                 }
                 else{
@@ -33,9 +34,6 @@ export class AuthService{
             }, (e: any) => {
                 console.error(e);
             });
-        }
-        else{
-            console.log("email/password empty");
         }
     }
 
