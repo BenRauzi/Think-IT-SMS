@@ -23,13 +23,14 @@ nav{
 
 
 .navbar {
-    background: #424142; 
+    background: #424142;
     width: 11%;
     height: 100%;
     position: fixed;
     font-size: 18px;
     color: white;
     text-align: center;
+    z-index: 1;
     hr{
         border-color: #41a7b8;
         width: 80%;
@@ -122,7 +123,45 @@ nav{
   // To make items move to right when the sub menu opens make a div with this as the id.
   #main {
     transition: margin-left .5s;
+    width:89%;
+    max-width: 89%;
     padding-left: 11.5%;
-    width:88%;
-    word-wrap: break-word;
+    padding-top: 2.25%;
   }
+
+#ribbon {
+    background-color: #424142;
+    height: 35px;
+    padding-left: 11%;
+    margin-bottom: 0.5%;
+    transition: margin-left .5s;
+    position: fixed;
+
+    text-align: center;
+    width: 100%;
+
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+      }
+      
+      li {
+        float: left;
+      }
+      
+      li a {
+        display: block;
+        color: #b0b1b4;
+        text-align: center;
+        padding: 8px 16px;
+        text-decoration: none;
+      }
+      
+      /* Change the link color to #111 (black) on hover */
+}
+
+.main {
+    margin-top:50px;
+}
