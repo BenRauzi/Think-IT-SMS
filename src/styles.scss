@@ -16,11 +16,15 @@ $candy-app-theme: mat-light-theme($candy-app-primary, $candy-app-accent, $candy-
 //Import the sniglet font
 @import url('https://fonts.googleapis.com/css?family=Sniglet|Srisakdi|Roboto|Open+Sans');
 
-//Variables for the variable colours and items
+//variables because isaac is wierd
 :root{
+    //Default Light-Blue theme
     --primary-colour: #282b26;
-    --secondary-colour: #eeeeee;
+    --secondary-colour: #10d3ec;
+    --tertiary-colour: #5ca0b1;
     --text-colour1: #ffffff;
+    --text-colour2: #8d8d8d;
+    --text-colour3: #000000;
 }
 
 header{
