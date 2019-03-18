@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 
 import { AuthService, ApiService } from '../services';
-import { Base } from '../models';
+// import { Base } from '../models';
 
 @Injectable({ providedIn: 'root' })
 export class AuthGuard implements CanActivate {
@@ -12,7 +12,7 @@ export class AuthGuard implements CanActivate {
         const currentUser = localStorage.getItem('pt-usertoken');
         if (currentUser) {
             // authorised so return true
-            this.api.isTokenExpired().subscribe((data: Base) => {
+            this.api.isTokenExpired().subscribe((data: any) => {
                 if(data.msg == "expired"){
                     this.router.navigate(['/login'], { queryParams: { returnUrl: state.url }});
                 }

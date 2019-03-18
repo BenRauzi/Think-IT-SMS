@@ -11,7 +11,6 @@ import { JwtInterceptor } from '../services';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
-import { RoutingTesterComponent } from './routing-tester/routing-tester.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { RegisterComponent } from './register/register.component';
 
@@ -20,7 +19,6 @@ import { RegisterComponent } from './register/register.component';
   declarations: [
     AppComponent,
     LoginComponent,
-    RoutingTesterComponent,
     DashboardComponent,
     RegisterComponent
   ],
