@@ -3,6 +3,8 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { AuthService } from '../../services';
 import { Router, RouterStateSnapshot } from '@angular/router';
 import { HttpClient } from '../../../node_modules/@angular/common/http';
+// import { BaseModel } from '../../models';
+import { MatSnackBar } from '@angular/material';
 
 
 @Component({
@@ -13,7 +15,7 @@ import { HttpClient } from '../../../node_modules/@angular/common/http';
 export class LoginComponent implements OnInit {
   form: FormGroup
 
-  constructor(private fb: FormBuilder, private auth: AuthService, private router: Router, private http: HttpClient) {
+  constructor(private fb: FormBuilder, private auth: AuthService, private router: Router, private http: HttpClient, private snackBar: MatSnackBar) {
     this.form = this.fb.group({
       username: ['',[Validators.required]],
       password: ['',Validators.required]
@@ -25,9 +27,32 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.http.get('http://localhost:3000/api/users').subscribe(data => {
-      console.log(data);
-    });
+    this.checkToken();
+  }
+
+  checkToken(){
+    const token = localStorage.getItem('pt-usertoken');
+    if(token){
+      this.auth.authenticateToken(token).subscribe((data: any) => {
+        if(data.msg === "Token Expired"){
+          console.log("Stay on login page, need to login again");
+          localStorage.removeItem('pt-usertoken');
+          this.snackBar.open('Your previous session has expired, please log in again!', 'Ok', {
+            duration: 5000,
+          });
+        }
+        else{
+          this.router.navigate(['/dashboard']);
+        }
+      });
+    }
+    else{
+      console.log("Token does not exist!");
+    }
+  }
+  
+  skipLogin(){
+    this.auth.login("usern", "passwggg");
   }
 
   login(){

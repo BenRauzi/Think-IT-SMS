@@ -4,6 +4,8 @@ import {TestDto, TokenDto } from '../dto';
 import { retry, catchError } from 'rxjs/operators';
 import { environment } from '../environments';
 import { Router } from '@angular/router';
+import { Observable } from '../../node_modules/rxjs';
+// import { BaseModel } from '../models';
 
 const API_URL = environment.API_URL;
 
@@ -34,6 +36,18 @@ export class AuthService{
             }, (e: any) => {
                 console.error(e);
             });
+        }
+    }
+
+    authenticateToken(token){
+        const options = {headers: new HttpHeaders({
+            'Content-Type': 'application/json',
+        })};
+        if(token){
+            return this.http.post('http://localhost:3000/api/authenticate',{token: token}, options);
+        }
+        else{
+            console.log("No token exists!");
         }
     }
 

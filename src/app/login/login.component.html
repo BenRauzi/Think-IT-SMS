@@ -13,8 +13,9 @@
         </mat-form-field>
         <div class="BelowLogin">
         <a href="" class="ForgotPass">Forgot your password?</a>
-        <button mat-button mat-raised-button color="primary" class="button button-primary" [disabled]="!form.valid" routerLink="/dashboard">Login</button>
+        <button mat-button mat-raised-button color="primary" class="button button-primary" [disabled]="!form.valid" (click)="login()">Login</button>
         </div>
     </fieldset>
-</form> 
+</form>
+<button mat-button mat-raised-button color="primary" class="button button-primary" (click)="skipLogin()">Skip Login (student permissions)</button> 
 <a routerLink="/register">Register</a>
