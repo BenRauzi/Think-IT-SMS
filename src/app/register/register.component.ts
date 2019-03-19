@@ -30,6 +30,7 @@ export class RegisterComponent implements OnInit {
     });
   }
 
+
   getErrorMessage(control) {
     return this.form.controls[control].hasError('required') ? 'You must enter a value' : this.form.controls[control].hasError('minLength') ? 'Password must be 8 characters or longer' : '';
   }

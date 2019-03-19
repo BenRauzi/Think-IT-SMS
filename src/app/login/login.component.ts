@@ -5,6 +5,7 @@ import { Router, RouterStateSnapshot } from '@angular/router';
 import { HttpClient } from '../../../node_modules/@angular/common/http';
 // import { BaseModel } from '../../models';
 import { MatSnackBar } from '@angular/material';
+import { TokenDto, UserDto } from '../../dto';
 
 
 @Component({
@@ -51,12 +52,47 @@ export class LoginComponent implements OnInit {
     }
   }
   
-  skipLogin(){
-    this.auth.login("usern", "passwggg");
+  skipLoginAdmin(){
+    this.auth.login("TestAdmin", "passingword").subscribe((data: TokenDto) => {
+      localStorage.setItem('pt-usertoken', data.token);
+      this.auth.user.role = data.user.role;
+      this.router.navigate(['/dashboard']);
+    });
+  }
+
+  skipLoginTeacher(){
+    this.auth.login("TestTeach", "passingword").subscribe((data: TokenDto) => {
+      localStorage.setItem('pt-usertoken', data.token);
+      this.auth.user.role = data.user.role;
+      this.router.navigate(['/dashboard']);
+    });
+  }
+
+  skipLoginStudent(){
+    this.auth.login("TestStu", "passingword").subscribe((data: TokenDto) => {
+      localStorage.setItem('pt-usertoken', data.token);
+      this.auth.user.role = data.user.role;
+      this.router.navigate(['/dashboard']);
+    });
   }
 
   login(){
     const val = this.form.value;
-    this.auth.login(val.username, val.password);
+    this.auth.login(val.username, val.password).subscribe((data: TokenDto) => {
+      if(data.token){
+          localStorage.setItem('pt-usertoken', data.token);
+          this.auth.user.role = data.user.role;
+          console.log("time to rerout!");
+          this.router.navigate(['/dashboard']);
+      }
+      else{
+          this.snackBar.open('Username/Password was incorrect', 'Ok', {
+            duration: 5000,
+          });
+      }
+  }, (e: any) => {
+      console.error(e);
+  });;
+    
   }
 }

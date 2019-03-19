@@ -1,4 +1,5 @@
 export class UserDto{
-    email: string;
-    password: string;
+    // public firstName: string;
+    // public lastName: string;
+    role: string;
 }
