@@ -151,17 +151,32 @@ nav{
       
       li {
         float: left;
-      }
-      
-      li a {
-        display: block;
-        color: #b0b1b4;
-        text-align: center;
-        padding: 8px 16px;
-        text-decoration: none;
-
+        a {
+            display: block;
+            color: #b0b1b4;
+            text-align: center;
+            padding: 8px 16px;
+            text-decoration: none;
+    
+            &:hover {
+                color: #f1f1f1;
+            }
+        }
         &:hover {
-            color: #f1f1f1;
+            ul {
+                opacity: 100;
+                transform: scale(1)
+            }
+        }
+        ul {
+            position: absolute;
+            transition: 200ms ease-in-out;
+            background-color: #515051;
+            opacity: 0;
+            transform: scale(0);
+            li {
+                display:inline-block;
+            }
         }
       }
 }
