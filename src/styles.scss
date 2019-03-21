@@ -24,7 +24,7 @@ $candy-app-theme: mat-light-theme($candy-app-primary, $candy-app-accent, $candy-
 }
 
 header{
-    width: calc(100% - 30px);
+    width: 100%;
     height: 50px;
     padding: 0 15px;
     background-color: #363537;
