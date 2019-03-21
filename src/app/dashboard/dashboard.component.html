@@ -6,8 +6,26 @@
     
     <div class="navbar">
       <a routerLink="/dashboard" title="Return to Dashboard"><img src="assets/avatar_1.png" type="Avatar"></a><br/>
-     <!-- <ul>
+      <ul>
+      <b>Oof</b> <!-- Debug - {{role}}-->
       <hr><p>Student</p><hr>
+    
+      <!--
+      <a routerLink="#"><li class="drop"><i class="fas fa-users"></i> Test
+          <ul>
+          <a href="/dashboard"><li>Test</li></a>
+          <a routerLink="#"><li>Test</li></a>
+          <a routerLink="#"><li>Test</li></a>
+          <a routerLink="#"><li>Test</li></a>
+  
+          </ul>
+          </li></a>
+      <ul>
+        <a routerLink="#"><li class="open">
+          <i class="fas fa-users"></i> Return
+        </li></a>
+      </ul>
+      -->
       
       <a routerLink="/login"><li><i class="fas fa-users"></i> Return</li></a>
       <a routerLink="/login"><li><i class="fas fa-users"></i> Return</li></a> 
@@ -16,24 +34,8 @@
       
       <hr><p>Actions</p><hr>
       <a href="javascript:void(0)" (click)="logout()"><li><i class="fas fa-users"></i> Logout</li></a>
-      </ul> -->
-
-      <ul class="nav flex-column">
-        <li class="nav-item">
-          <a class="nav-link active" href="#">Active</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#">Disabled</a>
-        </li>
       </ul>
-      
-    </div> 
+    </div>
     <a href="#" routerLink="/login">Login</a>
 
 </body>
