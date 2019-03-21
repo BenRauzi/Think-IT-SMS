@@ -22,7 +22,7 @@ export class AuthService{
         role: null
     };
 
-    login(username: string, password: string){
+    public login(username: string, password: string){
         if(username && password){
             const options = {headers: new HttpHeaders({
                 'Content-Type': 'application/json',

@@ -5,12 +5,15 @@ import { MatButtonModule } from '@angular/material';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent} from './dashboard/dashboard.component';
 import { RegisterComponent } from './register/register.component';
+import { AdminOnlyTestComponent } from './admin-only-test/admin-only-test.component';
+import { AuthGuard, RoleGuard } from '../guards';
 
 const routes: Routes = [
   { path:'login', component:LoginComponent },
-  { path:'dashboard', component: DashboardComponent },
+  { path:'dashboard', component: DashboardComponent, canActivate: [ AuthGuard ] },
   { path:'register', component: RegisterComponent },
-  { path:'', redirectTo:'login',pathMatch:"full" },
+  { path: 'adminonly', component: AdminOnlyTestComponent, data: { role: "Administrator" }, canActivate: [ RoleGuard, AuthGuard ] },
+  { path:'', redirectTo:'login', pathMatch:"full" },
   { path:'**', component:LoginComponent }
 ];
 

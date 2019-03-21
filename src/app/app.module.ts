@@ -5,7 +5,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatInputModule, MatFormFieldModule, MatCardModule, MatSelectModule, MatOptionModule, MatSnackBarModule } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { AuthService} from '../services';
+import { AuthGuard, RoleGuard } from '../guards';
+import { AuthService, ApiService} from '../services';
 import { JwtInterceptor } from '../services';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -13,6 +14,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { RegisterComponent } from './register/register.component';
+import { AdminOnlyTestComponent } from './admin-only-test/admin-only-test.component';
 
 
 @NgModule({
@@ -20,7 +22,8 @@ import { RegisterComponent } from './register/register.component';
     AppComponent,
     LoginComponent,
     DashboardComponent,
-    RegisterComponent
+    RegisterComponent,
+    AdminOnlyTestComponent
   ],
   imports: [
     BrowserModule,
@@ -39,6 +42,9 @@ import { RegisterComponent } from './register/register.component';
   ],
   providers: [
     AuthService,
+    ApiService,
+    AuthGuard,
+    RoleGuard,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: JwtInterceptor,
