@@ -1,7 +1,7 @@
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import{ Injectable } from '@angular/core';
 import {TestDto, TokenDto, UserDto } from '../dto';
-import { retry, catchError } from 'rxjs/operators';
+import { retry, catchError, map } from 'rxjs/operators';
 import { environment } from '../environments';
 import { Router } from '@angular/router';
 import { Observable } from '../../node_modules/rxjs';
@@ -27,7 +27,7 @@ export class AuthService{
             const options = {headers: new HttpHeaders({
                 'Content-Type': 'application/json',
             })};
-            return this.http.post('http://localhost:3000/api/login',{username: username, password: password}, options);
+            return this.http.post('http://localhost:3000/api/login',{username: username, password: password}, options).pipe(map(data => data));
         }
     }
 
