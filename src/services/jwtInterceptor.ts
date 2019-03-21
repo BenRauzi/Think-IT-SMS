@@ -9,19 +9,26 @@ export class JwtInterceptor implements HttpInterceptor{
     }
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {  
-        const authReq = req.clone({
-        headers: req.headers.set('Authorization', this.getToken())
-            .append('Access-Control-Allow-Origin', '*')
-        }); 
-        return next.handle(authReq).pipe(tap((event: HttpEvent<any>) => {
-        if (event instanceof HttpResponse) {
-            // do stuff with response if you want
+        let token = this.getToken();
+        console.log(token);
+        if(!token){
+            token = "none";
         }
-        }, (response: HttpErrorResponse) => { }));
+        // if(token){
+            const authReq = req.clone({
+                headers: req.headers.set('Authorization', token)
+                    .append('Access-Control-Allow-Origin', '*')
+                }); 
+                return next.handle(authReq).pipe(tap((event: HttpEvent<any>) => {
+                if (event instanceof HttpResponse) {
+                    // do stuff with response if you want
+                }
+                }, (response: HttpErrorResponse) => { }));
+        // }
     }
 
     getToken(){
-        return localStorage.getItem('pt-userid');
+        return localStorage.getItem('pt-usertoken');
     }
     
 
