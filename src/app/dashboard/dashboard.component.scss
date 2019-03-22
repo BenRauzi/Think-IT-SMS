@@ -6,19 +6,47 @@
     font-size: 18px;
     color: white;
     text-align: center;
+    ul {
+        position: absolute;
+        top:0;
+        left: 0;
+        padding-top:20px;
+        img{
+            margin-left:-40px;
+            width: 50%;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+        a {
+            li {
+                margin-left: -30px;
+                list-style: none;
+                text-align: center;
+                transition: 200ms all ease-in-out;
+                padding-left: 5px;
+                text-decoration: none;
+                color: #b0b1b4;
+                width: 150px;
+                margin-top: 5px;
+                line-height: 40px;  
+                &:hover {
+                    background-color: #41a7b8;
+                    border-radius: 5px;
+                    color: white; 
+                }
+            }
+            &:hover {
+                text-decoration: none;
+            }
+        }
+    }
     hr{
         border-color: #41a7b8;
         width: 80%;
         margin: auto;
         margin-top: 5px;
     }
-    img{
-        position:absolute;
-        top:30px;
-        left:25%;  
-        width: 50%;
-        border-radius: 50%;
-    }
+   
     p{
         color: white;
         text-align: center;
