@@ -15,6 +15,7 @@ import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { RegisterComponent } from './register/register.component';
 import { AdminOnlyTestComponent } from './admin-only-test/admin-only-test.component';
+import { NoticesComponent } from './notices/notices.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { AdminOnlyTestComponent } from './admin-only-test/admin-only-test.compon
     LoginComponent,
     DashboardComponent,
     RegisterComponent,
-    AdminOnlyTestComponent
+    AdminOnlyTestComponent,
+    NoticesComponent
   ],
   imports: [
     BrowserModule,
