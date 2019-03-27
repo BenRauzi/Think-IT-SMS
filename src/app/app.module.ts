@@ -6,7 +6,7 @@ import { MatButtonModule, MatInputModule, MatFormFieldModule, MatCardModule, Mat
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AuthGuard, RoleGuard } from '../guards';
-import { AuthService, ApiService} from '../services';
+import { AuthService, ApiService, NoticesService } from '../services';
 import { JwtInterceptor } from '../services';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -45,6 +45,7 @@ import { NoticesComponent } from './notices/notices.component';
   providers: [
     AuthService,
     ApiService,
+    NoticesService,
     AuthGuard,
     RoleGuard,
     {

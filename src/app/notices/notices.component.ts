@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NoticesService } from 'src/services';
 
 @Component({
   selector: 'app-notices',
@@ -7,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NoticesComponent implements OnInit {
 
-  constructor() { }
+  constructor(private notices: NoticesService) { }
 
   ngOnInit() {
+  }
+
+  testWrite(){
+    this.notices.write().subscribe((data) => {
+      console.log(data);
+    });
+  }
+
+  testRead(){
+    this.notices.read().subscribe((data) => {
+      console.log(data);
+    });
   }
 
 }

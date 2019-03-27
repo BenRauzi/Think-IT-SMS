@@ -14,7 +14,7 @@ const routes: Routes = [
   { path:'login', component:LoginComponent },
   { path:'dashboard', component: DashboardComponent, canActivate: [ AuthGuard ] },
   { path:'register', component: RegisterComponent },
-  { path:'notices', component: NoticesComponent },
+  { path:'notices', component: NoticesComponent, canActivate: [ AuthGuard ] },
   { path: 'adminonly', component: AdminOnlyTestComponent, data: { role: "Administrator" }, canActivate: [ RoleGuard, AuthGuard ] },
   { path:'', redirectTo:'login', pathMatch:"full" },
   { path:'**', component:LoginComponent }
