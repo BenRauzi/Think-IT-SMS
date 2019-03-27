@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '../../../node_modules/@angular/common/http';
+import { environment } from '../../environments';
+
+const API_URL = environment.API_URL;
 
 export interface Role {
   value: string;
@@ -43,7 +46,7 @@ export class RegisterComponent implements OnInit {
     const options = {headers: new HttpHeaders({
       'Content-Type': 'application/json',
   })};
-    this.http.post('http://localhost:3000/api/register', {username: val.username, name: val.name, password: val.password, role: val.role}, options).subscribe(data => {
+    this.http.post(`${API_URL}/api/register`, {username: val.username, name: val.name, password: val.password, role: val.role}, options).subscribe(data => {
       console.log(data);
     });
   }

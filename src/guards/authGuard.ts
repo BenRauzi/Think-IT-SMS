@@ -7,7 +7,10 @@ import { from } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { BaseModel } from '../models';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from '../environments';
 // import { Base } from '../models';
+
+const API_URL = environment.API_URL;
 
 @Injectable({ providedIn: 'root' })
 export class AuthGuard implements CanActivate {
@@ -43,7 +46,7 @@ export class AuthGuard implements CanActivate {
             const options = {headers: new HttpHeaders({
                 'Content-Type': 'application/json',
             })};
-            return this.http.post('http://localhost:3000/api/authenticate', {token: currentUser}, options).pipe(
+            return this.http.post(`${API_URL}/api/authenticate`, {token: currentUser}, options).pipe(
                 map(res => {
                     if(res['msg'] === "Token Expired"){
                         this.router.navigate(['/login']);

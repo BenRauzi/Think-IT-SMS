@@ -27,7 +27,7 @@ export class AuthService{
             const options = {headers: new HttpHeaders({
                 'Content-Type': 'application/json',
             })};
-            return this.http.post('http://localhost:3000/api/login',{username: username, password: password}, options).pipe(map(data => data));
+            return this.http.post(`${API_URL}/api/login`,{username: username, password: password}, options).pipe(map(data => data));
         }
     }
 
@@ -36,7 +36,7 @@ export class AuthService{
             'Content-Type': 'application/json',
         })};
         if(token){
-            return this.http.post('http://localhost:3000/api/authenticate',{token: token}, options);
+            return this.http.post(`${API_URL}/api/authenticate`,{token: token}, options);
         }
         else{
             console.log("No token exists!");
@@ -50,7 +50,7 @@ export class AuthService{
                 'Content-Type': 'application/json',
                 'x-access-token': token
             })};
-            this.http.post('http://localhost:3000/api/verify', {}).pipe(retry(3)).subscribe(data => {
+            this.http.post(`${API_URL}/api/verify`, {}).pipe(retry(3)).subscribe(data => {
                 console.log(data);
             });
         }
