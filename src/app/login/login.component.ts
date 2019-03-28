@@ -14,8 +14,9 @@ import { TokenDto, UserDto } from '../../dto';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  form: FormGroup
+  form: FormGroup;
 
+// tslint:disable-next-line: max-line-length
   constructor(private fb: FormBuilder, private auth: AuthService, private router: Router, private http: HttpClient, private snackBar: MatSnackBar) {
     this.form = this.fb.group({
       username: ['',[Validators.required]],

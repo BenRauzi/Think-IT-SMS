@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, ViewChild } from '@angular/core';
 import { NoticesService } from 'src/services';
+import { Notice } from 'src/models';
+import { MatTableDataSource, MatPaginator } from '@angular/material';
 
+let NOTICE_DATA: Notice[];
 @Component({
   selector: 'app-notices',
   templateUrl: './notices.component.html',
@@ -8,21 +11,20 @@ import { NoticesService } from 'src/services';
 })
 export class NoticesComponent implements OnInit {
 
+  dataSource = new MatTableDataSource<Notice>([{id:'3',title:'Hello',information:'test',teacher:'yes'}]);
+  displayedColumns: string[] = ['id', 'title', 'information', 'teacher'];
+
+  visible = true;
   constructor(private notices: NoticesService) { }
 
+  @ViewChild(MatPaginator, {}) paginator: MatPaginator;
+  
   ngOnInit() {
-  }
-
-  testWrite(){
-    this.notices.write().subscribe((data) => {
+    this.dataSource.paginator = this.paginator;
+    this.notices.read().subscribe((data: Notice[]) => {
+      this.dataSource.data = data;
       console.log(data);
-    });
-  }
-
-  testRead(){
-    this.notices.read().subscribe((data) => {
-      console.log(data);
-    });
+    }); 
   }
 
 }

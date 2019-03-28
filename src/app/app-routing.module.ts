@@ -8,6 +8,7 @@ import { NoticesComponent} from './notices/notices.component';
 import { RegisterComponent } from './register/register.component';
 import { AdminOnlyTestComponent } from './admin-only-test/admin-only-test.component';
 import { AuthGuard, RoleGuard } from '../guards';
+import { AddNoticeComponent } from './add-notice/add-notice.component';
 
 
 const routes: Routes = [
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path:'register', component: RegisterComponent },
   { path:'notices', component: NoticesComponent, canActivate: [ AuthGuard ] },
   { path: 'adminonly', component: AdminOnlyTestComponent, data: { role: "Administrator" }, canActivate: [ RoleGuard, AuthGuard ] },
+  { path: 'addnotice', component: AddNoticeComponent, data: {  role: 'Teacher'}, canActivate: [ RoleGuard, AuthGuard ] },
   { path:'', redirectTo:'login', pathMatch:"full" },
   { path:'**', component:LoginComponent }
 ];

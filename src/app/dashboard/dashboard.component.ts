@@ -12,8 +12,15 @@ export class DashboardComponent implements OnInit {
 
   role: string;
 
+  isTeacher = false;
+  isAdmin = false;
   ngOnInit() {
     this.role = this.auth.user.role;
+    if(this.role === "Teacher"){ this.isTeacher = true }
+    else if(this.role === "Administrator"){
+      this.isTeacher = true;
+      this.isAdmin = true;
+    }
   }
 
   logout(){
