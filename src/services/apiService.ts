@@ -1,16 +1,18 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../environments';
+import { Injectable } from '@angular/core';
+import { UserModel } from 'src/models';
+import { AuthService } from './authService';
 
-// const API_URL = environment.API_URL;
+const API_URL = environment.API_URL;
 
+@Injectable({
+    providedIn: 'root'
+})
 export class ApiService{
-    constructor(){}
+    constructor(private http: HttpClient, private auth: AuthService){}
 
-    // isTokenExpired(){
-    //     const token = localStorage.getItem('pt-usertoken');
-    //     const options = { headers: new HttpHeaders({
-    //         "Content-Type": "application/json"
-    //     })};
-    //     return this.http.post(`${API_URL}/api/expired`, token, options);
-    // }
+    getUser(){
+        return this.http.get(`${API_URL}/api/getuser`);
+    }
 }
