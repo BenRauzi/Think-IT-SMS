@@ -13,7 +13,11 @@ export class RoleGuard implements CanActivate{
         if(role === this.auth.user.role){
             return true;
         }
+        else if(this.auth.user.role === "Administrator"){
+            return true;
+        }
         else{
+            console.log(role);
             this.router.navigate(['/dashboard']);
             return false;
         }
