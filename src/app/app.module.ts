@@ -17,6 +17,8 @@ import { RegisterComponent } from './register/register.component';
 import { AdminOnlyTestComponent } from './admin-only-test/admin-only-test.component';
 import { NoticesComponent } from './notices/notices.component';
 import { AddNoticeComponent } from './add-notice/add-notice.component';
+import { StudentDetailsComponent } from './student-details/student-details.component';
+import { StudentDetailsEditTestComponent } from './student-details-edit-test/student-details-edit-test.component';
 
 
 @NgModule({
@@ -27,7 +29,9 @@ import { AddNoticeComponent } from './add-notice/add-notice.component';
     RegisterComponent,
     AdminOnlyTestComponent,
     NoticesComponent,
-    AddNoticeComponent
+    AddNoticeComponent,
+    StudentDetailsComponent,
+    StudentDetailsEditTestComponent
   ],
   imports: [
     BrowserModule,
