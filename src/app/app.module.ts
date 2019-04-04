@@ -6,7 +6,7 @@ import { MatButtonModule, MatInputModule, MatFormFieldModule, MatCardModule, Mat
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AuthGuard, RoleGuard } from '../guards';
-import { AuthService, ApiService, NoticesService } from '../services';
+import { AuthService, ApiService, NoticesService, DetailsService } from '../services';
 import { JwtInterceptor } from '../services';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -55,6 +55,7 @@ import { StudentDetailsEditTestComponent } from './student-details-edit-test/stu
     AuthService,
     ApiService,
     NoticesService,
+    DetailsService,
     AuthGuard,
     RoleGuard,
     {
