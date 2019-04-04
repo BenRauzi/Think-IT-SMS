@@ -12,7 +12,9 @@
       <hr><p>Student</p><hr>
       <a routerLink="/login"><li><i class="fas fa-users"></i> Return</li></a>
       <a routerLink="/login"><li><i class="fas fa-users"></i> Return</li></a> 
-      <a routerLink="/notices"><li><i class="fas fa-users"></i> Notice Testing</li></a> 
+      <a routerLink="/notices"><li><i class="fas fa-users"></i> Notice Testing</li></a>
+      <a routerLink="/studentdetails"><li><i class="fas fa-users"></i> Details Testing</li></a>
+      
 
       <div *ngIf="this.isTeacher">
       <hr><p>Teacher</p><hr>
@@ -21,7 +23,8 @@
 
       <div *ngIf="this.isAdmin">
       <hr><p>Admin</p><hr>
-      <a routerLink="/adminonly"><li><i class="fas fa-users"></i> Admin Testing</li></a> 
+      <a routerLink="/adminonly"><li><i class="fas fa-users"></i> Admin Testing</li></a>
+      <a routerLink="/editstudentdetails"><li><i class="fas fa-users"></i> Edit Details Testing</li></a>  
       </div>
       
       <hr><p>Actions</p><hr>
