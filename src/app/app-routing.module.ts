@@ -15,7 +15,7 @@ import { StudentDetailsEditTestComponent } from './student-details-edit-test/stu
 const routes: Routes = [
   { path:'login', component:LoginComponent },
   { path:'dashboard', component: DashboardComponent, canActivate: [ AuthGuard ] },
-  { path:'register', component: RegisterComponent },
+  { path:'register', component: RegisterComponent, },
   { path:'notices', component: NoticesComponent, canActivate: [ AuthGuard ] },
   { path: 'adminonly', component: AdminOnlyTestComponent, data: { role: "Administrator" }, canActivate: [ RoleGuard, AuthGuard ] },
   { path: 'addnotice', component: AddNoticeComponent, data: {  role: 'Teacher'}, canActivate: [ RoleGuard, AuthGuard ] },
