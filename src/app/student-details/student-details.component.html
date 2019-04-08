@@ -1,4 +1,173 @@
-<p>
-  student-details works!
-</p>
+<table mat-table [dataSource]="this.dataSource" class="">
+  <ng-container matColumnDef="FirstName">
+    <th mat-header-cell *matHeaderCellDef>First Name</th>
+    <td mat-cell *matCellDef="let student"> {{student.FirstName}} </td>
+  </ng-container>
+  <ng-container matColumnDef="ForeNames">
+    <th mat-header-cell *matHeaderCellDef>Fore Names</th>
+    <td mat-cell *matCellDef="let student"> {{student.ForeNames}} </td>
+  </ng-container>
+  <ng-container matColumnDef="LastName">
+    <th mat-header-cell *matHeaderCellDef>Last Name</th>
+    <td mat-cell *matCellDef="let student"> {{student.LastName}} </td>
+  </ng-container>
+  <ng-container matColumnDef="DateOfBirth">
+    <th mat-header-cell *matHeaderCellDef>Date of Birth</th>
+    <td mat-cell *matCellDef="let student"> {{student.DateOfBirth}} </td>
+  </ng-container>
+  <ng-container matColumnDef="NSN">
+    <th mat-header-cell *matHeaderCellDef>NSN</th>
+    <td mat-cell *matCellDef="let student"> {{student.NSN}} </td>
+  </ng-container>
+  <ng-container matColumnDef="HomePhone">
+    <th mat-header-cell *matHeaderCellDef>Last Name</th>
+    <td mat-cell *matCellDef="let student"> {{student.HomePhone}} </td>
+  </ng-container>
+  <ng-container matColumnDef="PhysicalUnitNo">
+    <th mat-header-cell *matHeaderCellDef>Physical Unit Number</th>
+    <td mat-cell *matCellDef="let student"> {{student.PhysicalUnitNo}} </td>
+  </ng-container>
+  <ng-container matColumnDef="PhysicalNumber">
+    <th mat-header-cell *matHeaderCellDef>Physical House Number</th>
+    <td mat-cell *matCellDef="let student"> {{student.PhysicalNumber}} </td>
+  </ng-container>
+  <ng-container matColumnDef="PhysicalStreet">
+    <th mat-header-cell *matHeaderCellDef>Physical Street Namme</th>
+    <td mat-cell *matCellDef="let student"> {{student.PhysicalStreet}} </td>
+  </ng-container>
+  <ng-container matColumnDef="PhysicalRuralDelivery">
+    <th mat-header-cell *matHeaderCellDef>Physical Rural Delivery</th>
+    <td mat-cell *matCellDef="let student"> {{student.PhysicalRuralDelivery}} </td>
+  </ng-container>
+  <ng-container matColumnDef="PhysicalSuburb">
+    <th mat-header-cell *matHeaderCellDef>Physical Suburb</th>
+    <td mat-cell *matCellDef="let student"> {{student.PhysicalSuburb}} </td>
+  </ng-container>
+  <ng-container matColumnDef="PhysicalPostcode">
+    <th mat-header-cell *matHeaderCellDef>Physical Postcode</th>
+    <td mat-cell *matCellDef="let student"> {{student.PhysicalPostcode}} </td>
+  </ng-container>
+  <ng-container matColumnDef="PostalUnitNo">
+    <th mat-header-cell *matHeaderCellDef>Postal Unit Number</th>
+    <td mat-cell *matCellDef="let student"> {{student.PostalUnitNo}} </td>
+  </ng-container>
+  <ng-container matColumnDef="PostalNumber">
+    <th mat-header-cell *matHeaderCellDef>Postal House Number</th>
+    <td mat-cell *matCellDef="let student"> {{student.PostalNumber}} </td>
+  </ng-container>
+  <ng-container matColumnDef="PostalStreet">
+    <th mat-header-cell *matHeaderCellDef>Postal Street Namme</th>
+    <td mat-cell *matCellDef="let student"> {{student.PostalStreet}} </td>
+  </ng-container>
+  <ng-container matColumnDef="PostalRuralDelivery">
+    <th mat-header-cell *matHeaderCellDef>Postal Rural Delivery</th>
+    <td mat-cell *matCellDef="let student"> {{student.PostalRuralDelivery}} </td>
+  </ng-container>
+  <ng-container matColumnDef="PostalSuburb">
+    <th mat-header-cell *matHeaderCellDef>Postal Suburb</th>
+    <td mat-cell *matCellDef="let student"> {{student.PostalSuburb}} </td>
+  </ng-container>
+  <ng-container matColumnDef="PostalPostcode">
+    <th mat-header-cell *matHeaderCellDef>Postal Postcode</th>
+    <td mat-cell *matCellDef="let student"> {{student.PostalPostcode}} </td>
+  </ng-container>
+  <ng-container matColumnDef="CaregiverOneRelationship">
+    <th mat-header-cell *matHeaderCellDef>Caregiver One Relationship</th>
+    <td mat-cell *matCellDef="let student"> {{student.CaregiverOneRelationship}} </td>
+  </ng-container>
+  <ng-container matColumnDef="CaregiverOneName">
+    <th mat-header-cell *matHeaderCellDef>Caregiver One Name</th>
+    <td mat-cell *matCellDef="let student"> {{student.CaregiverOneName}} </td>
+  </ng-container>
+  <ng-container matColumnDef="CaregiverOneAddress">
+    <th mat-header-cell *matHeaderCellDef>Caregiver One Address</th>
+    <td mat-cell *matCellDef="let student"> {{student.CaregiverOneAddress}} </td>
+  </ng-container>
+  <ng-container matColumnDef="CaregiverOneHomePhone">
+    <th mat-header-cell *matHeaderCellDef>Caregiver One Home Phone</th>
+    <td mat-cell *matCellDef="let student"> {{student.CaregiverOneHomePhone}} </td>
+  </ng-container>
+  <ng-container matColumnDef="CaregiverOneMobilePhone">
+    <th mat-header-cell *matHeaderCellDef>Caregiver One Mobile Phone</th>
+    <td mat-cell *matCellDef="let student"> {{student.CaregiverOneMobilePhone}} </td>
+  </ng-container>
+  <ng-container matColumnDef="CaregiverOneOccupation">
+    <th mat-header-cell *matHeaderCellDef>Caregiver One Occupation</th>
+    <td mat-cell *matCellDef="let student"> {{student.CaregiverOneOccupation}} </td>
+  </ng-container>
+  <ng-container matColumnDef="CaregiverOneWorkPhone">
+    <th mat-header-cell *matHeaderCellDef>Caregiver One Work Phone</th>
+    <td mat-cell *matCellDef="let student"> {{student.CaregiverOneWorkPhone}} </td>
+  </ng-container>
+  <ng-container matColumnDef="CaregiverOneEmail">
+    <th mat-header-cell *matHeaderCellDef>Caregiver One Email</th>
+    <td mat-cell *matCellDef="let student"> {{student.CaregiverOneEmail}} </td>
+  </ng-container>
+  <ng-container matColumnDef="CaregiverTwoRelationship">
+    <th mat-header-cell *matHeaderCellDef>Caregiver Two Relationship</th>
+    <td mat-cell *matCellDef="let student"> {{student.CaregiverTwoRelationship}} </td>
+  </ng-container>
+  <ng-container matColumnDef="CaregiverTwoName">
+    <th mat-header-cell *matHeaderCellDef>Caregiver Two Name</th>
+    <td mat-cell *matCellDef="let student"> {{student.CaregiverTwoName}} </td>
+  </ng-container>
+  <ng-container matColumnDef="CaregiverTwoAddress">
+    <th mat-header-cell *matHeaderCellDef>Caregiver Two Address</th>
+    <td mat-cell *matCellDef="let student"> {{student.CaregiverTwoAddress}} </td>
+  </ng-container>
+  <ng-container matColumnDef="CaregiverTwoHomePhone">
+    <th mat-header-cell *matHeaderCellDef>Caregiver Two Home Phone</th>
+    <td mat-cell *matCellDef="let student"> {{student.CaregiverTwoHomePhone}} </td>
+  </ng-container>
+  <ng-container matColumnDef="CaregiverTwoMobilePhone">
+    <th mat-header-cell *matHeaderCellDef>Caregiver Two Mobile Phone</th>
+    <td mat-cell *matCellDef="let student"> {{student.CaregiverTwoMobilePhone}} </td>
+  </ng-container>
+  <ng-container matColumnDef="CaregiverTwoOccupation">
+    <th mat-header-cell *matHeaderCellDef>Caregiver Two Occupation</th>
+    <td mat-cell *matCellDef="let student"> {{student.CaregiverTwoOccupation}} </td>
+  </ng-container>
+  <ng-container matColumnDef="CaregiverTwoWorkPhone">
+    <th mat-header-cell *matHeaderCellDef>Caregiver Two Work Phone</th>
+    <td mat-cell *matCellDef="let student"> {{student.CaregiverTwoWorkPhone}} </td>
+  </ng-container>
+  <ng-container matColumnDef="CaregiverTwoEmail">
+    <th mat-header-cell *matHeaderCellDef>Caregiver Two Email</th>
+    <td mat-cell *matCellDef="let student"> {{student.CaregiverTwoEmail}} </td>
+  </ng-container>
+  <ng-container matColumnDef="EmergencyContactRelationship">
+    <th mat-header-cell *matHeaderCellDef>Emergency Contact Relationship</th>
+    <td mat-cell *matCellDef="let student"> {{student.EmergencyContactRelationship}} </td>
+  </ng-container>
+  <ng-container matColumnDef="EmergencyContactName">
+    <th mat-header-cell *matHeaderCellDef>Emergency Contact Name</th>
+    <td mat-cell *matCellDef="let student"> {{student.EmergencyContactName}} </td>
+  </ng-container>
+  <ng-container matColumnDef="EmergencyContactAddress">
+    <th mat-header-cell *matHeaderCellDef>Emergency Contact Address</th>
+    <td mat-cell *matCellDef="let student"> {{student.EmergencyContactAddress}} </td>
+  </ng-container>
+  <ng-container matColumnDef="EmergencyContactHomePhone">
+    <th mat-header-cell *matHeaderCellDef>Emergency Contact Home Phone</th>
+    <td mat-cell *matCellDef="let student"> {{student.EmergencyContactHomePhone}} </td>
+  </ng-container>
+  <ng-container matColumnDef="EmergencyContactMobilePhone">
+    <th mat-header-cell *matHeaderCellDef>Emergency Contact Mobile Phone</th>
+    <td mat-cell *matCellDef="let student"> {{student.EmergencyContactMobilePhone}} </td>
+  </ng-container>
+  <ng-container matColumnDef="EmergencyContactOccupation">
+    <th mat-header-cell *matHeaderCellDef>Emergency Contact Occupation</th>
+    <td mat-cell *matCellDef="let student"> {{student.EmergencyContactOccupation}} </td>
+  </ng-container>
+  <ng-container matColumnDef="EmergencyContactWorkPhone">
+    <th mat-header-cell *matHeaderCellDef>Emergency Contact Work Phone</th>
+    <td mat-cell *matCellDef="let student"> {{student.EmergencyContactWorkPhone}} </td>
+  </ng-container>
+  <ng-container matColumnDef="EmergencyContactEmail">
+    <th mat-header-cell *matHeaderCellDef>Emergency Contact Email</th>
+    <td mat-cell *matCellDef="let student"> {{student.EmergencyContactEmail}} </td>
+  </ng-container>
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+</table>
 <a routerLink="/dashboard">Dashboard</a>

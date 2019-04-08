@@ -16,6 +16,8 @@ export class StudentDetailsEditTestComponent implements OnInit {
 
   student: FormGroup;
 
+  loading = false;
+
   StudentDetails: FormGroup;
 
   oldStudentDetails = new Student();
@@ -84,14 +86,18 @@ export class StudentDetailsEditTestComponent implements OnInit {
   }
 
   changeStudent(event){
+    this.loading = true;
     this.details.getStudentDetails(event.value).subscribe((result: Student) => {
+      this.loading = false;
       this.studentDetails = result;
       this.oldStudentDetails = result;
     });
   }
 
   updateDetails(){
+    this.loading = true;
     this.details.setStudentDetails(this.studentDetails).subscribe(result => {
+      this.loading = false;
       console.log(result);
     });
   }
