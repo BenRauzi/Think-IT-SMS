@@ -6,7 +6,7 @@ import { MatButtonModule, MatInputModule, MatFormFieldModule, MatCardModule, Mat
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AuthGuard, RoleGuard } from '../guards';
-import { AuthService, ApiService, NoticesService } from '../services';
+import { AuthService, ApiService, NoticesService, DetailsService } from '../services';
 import { JwtInterceptor } from '../services';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -17,6 +17,8 @@ import { RegisterComponent } from './register/register.component';
 import { AdminOnlyTestComponent } from './admin-only-test/admin-only-test.component';
 import { NoticesComponent } from './notices/notices.component';
 import { AddNoticeComponent } from './add-notice/add-notice.component';
+import { StudentDetailsComponent } from './student-details/student-details.component';
+import { StudentDetailsEditTestComponent } from './student-details-edit-test/student-details-edit-test.component';
 
 
 @NgModule({
@@ -27,7 +29,9 @@ import { AddNoticeComponent } from './add-notice/add-notice.component';
     RegisterComponent,
     AdminOnlyTestComponent,
     NoticesComponent,
-    AddNoticeComponent
+    AddNoticeComponent,
+    StudentDetailsComponent,
+    StudentDetailsEditTestComponent
   ],
   imports: [
     BrowserModule,
@@ -51,6 +55,7 @@ import { AddNoticeComponent } from './add-notice/add-notice.component';
     AuthService,
     ApiService,
     NoticesService,
+    DetailsService,
     AuthGuard,
     RoleGuard,
     {
