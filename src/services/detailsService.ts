@@ -29,6 +29,10 @@ export class DetailsService{
         return this.http.post(`${API_URL}/api/student/details`, {userId}, options);
     }
 
+    getStudentDetailsAsStudent(){
+        return this.http.get(`${API_URL}/api/student/details`);
+    }
+
     setStudentDetails(student){
         const options = {headers: new HttpHeaders({
             'Content-Type': 'application/json',
