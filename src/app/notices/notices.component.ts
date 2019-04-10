@@ -11,7 +11,7 @@ let NOTICE_DATA: Notice[];
 })
 export class NoticesComponent implements OnInit {
 
-  dataSource = new MatTableDataSource<Notice>([{id:'3',title:'Hello',information:'test',teacher:'yes'}]);
+  dataSource = new MatTableDataSource<Notice>([{title:'Hello',information:'test',teacher:'yes'}]);
   displayedColumns: string[] = ['title', 'information', 'teacher'];
 
   visible = true;
