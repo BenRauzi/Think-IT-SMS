@@ -20,6 +20,7 @@ import { NoticesComponent } from './notices/notices.component';
 import { AddNoticeComponent } from './add-notice/add-notice.component';
 import { StudentDetailsComponent } from './student-details/student-details.component';
 import { StudentDetailsEditTestComponent } from './student-details-edit-test/student-details-edit-test.component';
+import { NavigationComponent } from './navigation/navigation.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { StudentDetailsEditTestComponent } from './student-details-edit-test/stu
     NoticesComponent,
     AddNoticeComponent,
     StudentDetailsComponent,
-    StudentDetailsEditTestComponent
+    StudentDetailsEditTestComponent,
+    NavigationComponent
   ],
   imports: [
     BrowserModule,

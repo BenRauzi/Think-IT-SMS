@@ -1,0 +1,34 @@
+
+<body>
+    
+  <div class="navbar">
+    <a routerLink="/dashboard" title="Return to Dashboard"><img src="assets/avatar_1.png" type="Avatar"></a><br/>
+    <ul>
+    <b>{{this.auth.user.role}}</b>
+
+    <hr><p>Student</p><hr>
+    <a routerLink="/login"><li><i class="fas fa-users"></i> Return</li></a>
+    <a routerLink="/login"><li><i class="fas fa-users"></i> Return</li></a> 
+    <a routerLink="/notices"><li><i class="fas fa-users"></i> Notice Testing</li></a>
+    <a routerLink="/studentdetails"><li><i class="fas fa-users"></i> Details Testing</li></a>
+    
+
+    <div *ngIf="this.auth.user.role === 'Teacher' || this.auth.user.role === 'Administrator'">
+    <hr><p>Teacher</p><hr>
+    <a routerLink="/addnotice"><li><i class="fas fa-users"></i> Add Notice</li></a>
+    </div>
+
+    <div *ngIf="this.auth.user.role === 'Administrator'">
+    <hr><p>Admin</p><hr>
+    <a routerLink="/register"><li><i class="fas fa-users"></i> Register</li></a>
+    <a routerLink="/adminonly"><li><i class="fas fa-users"></i> Admin Testing</li></a>
+    <a routerLink="/editstudentdetails"><li><i class="fas fa-users"></i> Edit Details Testing</li></a>  
+    </div>
+    
+    <hr><p>Actions</p><hr>
+    <a href="javascript:void(0)" (click)="logout()"><li><i class="fas fa-users"></i> Logout</li></a>
+    </ul>
+  </div>
+  <a href="#" routerLink="/login">Login</a>
+</body>
+<router-outlet></router-outlet>
