@@ -24,31 +24,38 @@ $candy-app-theme: mat-light-theme($candy-app-primary, $candy-app-accent, $candy-
 }
 
 header{
-    width: calc(100% - 30px);
-    height: 50px;
-    padding: 0 15px;
-    background-color: #363537;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    .left {
-        color: white;
-    }
-    .right {
-        font-size: 14px;
-        text-align: right;
-        color: white;
-        width:520px;
-        a {
-            color: white;
-            text-decoration: none;
-        }
-    }
+  width: calc(100% - 30px);
+  height: 50px;
+  padding: 0 15px;
+  top: 0;
+  background-color: #363537;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  position: fixed;
+  align-items: center;
+  .left {
+      color: white;
+  }
+  .right {
+      font-size: 14px;
+      text-align: right;
+      color: white;
+      width:520px;
+      overflow-x: hidden;
+
+      a {
+          color: white;
+          text-decoration: none;
+      }
+  }
 }
 body{
-    margin: 0px;
-    font-family:"Arial", Helvetica Neue, Helvetica;
+  margin: 0px;
+  max-width: 100%;
+  overflow-x: hidden;
+
+  font-family:"Arial", Helvetica Neue, Helvetica;
 }
 
 /* width */

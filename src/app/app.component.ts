@@ -16,4 +16,5 @@ export class AppComponent {
   alertFunction(){
     alert("Hello!");
   }
+  
 }
