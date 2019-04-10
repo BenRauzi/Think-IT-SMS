@@ -1,8 +1,4 @@
 <table mat-table [dataSource]="this.dataSource" class="">
-  <ng-container matColumnDef="id">
-    <th mat-header-cell *matHeaderCellDef>ID</th>
-    <td mat-cell *matCellDef="let notice"> {{notice.id}} </td>
-  </ng-container>
   <ng-container matColumnDef="title">
     <th mat-header-cell *matHeaderCellDef>Title</th>
     <td mat-cell *matCellDef="let notice"> {{notice.title}} </td>

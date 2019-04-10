@@ -12,7 +12,7 @@ let NOTICE_DATA: Notice[];
 export class NoticesComponent implements OnInit {
 
   dataSource = new MatTableDataSource<Notice>([{id:'3',title:'Hello',information:'test',teacher:'yes'}]);
-  displayedColumns: string[] = ['id', 'title', 'information', 'teacher'];
+  displayedColumns: string[] = ['title', 'information', 'teacher'];
 
   visible = true;
   constructor(private notices: NoticesService) { }
