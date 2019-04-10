@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Student, UserModel } from 'src/models';
 import { DetailsService } from 'src/services';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material';
 
 export interface StudentNameID{
   Name: string;
@@ -23,7 +25,7 @@ export class StudentDetailsEditTestComponent implements OnInit {
   oldStudentDetails = new Student();
   studentDetails = new Student();
 
-  constructor(private details: DetailsService, private fb: FormBuilder) {
+  constructor(private details: DetailsService, private fb: FormBuilder, private router: Router, private snackBar: MatSnackBar) {
     this.student = this.fb.group({
       studentsSelect: ['', Validators.required]
     });
@@ -81,7 +83,6 @@ export class StudentDetailsEditTestComponent implements OnInit {
   getStudents(){
     this.details.getStudents().subscribe((result: StudentNameID[]) => {
       this.students = result;
-      console.log(this.students);
     });
   }
 
@@ -90,22 +91,27 @@ export class StudentDetailsEditTestComponent implements OnInit {
     this.details.getStudentDetails(event.value).subscribe((result: Student) => {
       this.loading = false;
       this.studentDetails = result;
-      this.oldStudentDetails = result;
+      this.oldStudentDetails = Object.assign({}, result);
     });
   }
 
   updateDetails(){
+    this.oldStudentDetails = Object.assign({}, this.studentDetails);
     this.loading = true;
     this.details.setStudentDetails(this.studentDetails).subscribe(result => {
       this.loading = false;
-      console.log(result);
+      if(result["status"] === 401){
+        this.router.navigate(['/login']);
+      } else {
+        this.snackBar.open('Successfully Updated Student!', 'Ok', {
+          duration: 5000,
+        });
+      }
     });
   }
 
   cancelUpdate(){
-    this.studentDetails = this.oldStudentDetails;
-    console.log(this.studentDetails);
-    console.log(this.oldStudentDetails);
+    this.studentDetails = Object.assign({}, this.oldStudentDetails);
   }
 
 }
