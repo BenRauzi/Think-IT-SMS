@@ -1,4 +1,4 @@
 export * from './userModel';
-export * from './base';
+export * from './baseModel';
 export * from './noticeModel';
 export * from './studentModel';

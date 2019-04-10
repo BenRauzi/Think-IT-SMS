@@ -9,7 +9,7 @@ import { UserModel } from 'src/models';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private router: Router, private auth: AuthService, private api: ApiService) { }
+  constructor(private router: Router, public auth: AuthService, private api: ApiService) { }
 
   role: string;
 
@@ -21,14 +21,14 @@ export class DashboardComponent implements OnInit {
 
   async checkPermission() {
     if (!this.auth.user.role) {
-      this.api.getUser().subscribe((data: UserModel) => {
-        this.auth.user = data;
-        this.role = this.auth.user.role;
-        this.updatePermissions();
-      });
+      // this.api.getUser().subscribe((data: UserModel) => {
+      //   this.auth.user = data;
+      //   this.role = this.auth.user.role;
+      //   this.updatePermissions();
+      // });
     }
-    this.role = this.auth.user.role;
-    this.updatePermissions();
+    // this.role = this.auth.user.role;
+    // this.updatePermissions();
   }
 
   updatePermissions() {

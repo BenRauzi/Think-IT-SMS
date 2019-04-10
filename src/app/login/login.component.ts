@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
-import { AuthService } from '../../services';
+import { AuthService, DebugService } from '../../services';
 import { Router, RouterStateSnapshot } from '@angular/router';
 import { HttpClient } from '../../../node_modules/@angular/common/http';
 // import { BaseModel } from '../../models';
@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
   form: FormGroup;
 
 // tslint:disable-next-line: max-line-length
-  constructor(private fb: FormBuilder, private auth: AuthService, private router: Router, private http: HttpClient, private snackBar: MatSnackBar) {
+  constructor(private fb: FormBuilder, private auth: AuthService, private router: Router, private http: HttpClient, private snackBar: MatSnackBar, private debug: DebugService) {
     this.form = this.fb.group({
       username: ['',[Validators.required]],
       password: ['',Validators.required]
@@ -30,14 +30,15 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.checkToken();
+    this.debug.ping();
   }
 
   checkToken(){
     const token = localStorage.getItem('pt-usertoken');
     if(token){
       this.auth.authenticateToken(token).subscribe((data: any) => {
-        if(data.msg === "Token Expired"){
-          console.log("Stay on login page, need to login again");
+        if(data.msg === 'Token Expired'){
+          console.log('Stay on login page, need to login again'); // debug
           localStorage.removeItem('pt-usertoken');
           this.snackBar.open('Your previous session has expired, please log in again!', 'Ok', {
             duration: 5000,
@@ -80,13 +81,12 @@ export class LoginComponent implements OnInit {
   login(){
     const val = this.form.value;
     this.auth.login(val.username, val.password).subscribe((data: TokenDto) => {
-      if(data.token){
+      console.log(data);
+      if (data.token) {
           localStorage.setItem('pt-usertoken', data.token);
           this.auth.user.role = data.user.role;
-          console.log("time to rerout!");
           this.router.navigate(['/dashboard']);
-      }
-      else{
+      } else {
           this.snackBar.open('Username/Password was incorrect', 'Ok', {
             duration: 5000,
           });

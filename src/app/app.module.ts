@@ -1,3 +1,4 @@
+// tslint:disable: max-line-length
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
@@ -6,7 +7,7 @@ import { MatButtonModule, MatInputModule, MatFormFieldModule, MatCardModule, Mat
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AuthGuard, RoleGuard } from '../guards';
-import { AuthService, ApiService, NoticesService, DetailsService } from '../services';
+import { AuthService, ApiService, NoticesService, DetailsService, DebugService } from '../services';
 import { JwtInterceptor } from '../services';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -19,7 +20,6 @@ import { NoticesComponent } from './notices/notices.component';
 import { AddNoticeComponent } from './add-notice/add-notice.component';
 import { StudentDetailsComponent } from './student-details/student-details.component';
 import { StudentDetailsEditTestComponent } from './student-details-edit-test/student-details-edit-test.component';
-
 
 @NgModule({
   declarations: [
@@ -56,6 +56,7 @@ import { StudentDetailsEditTestComponent } from './student-details-edit-test/stu
     ApiService,
     NoticesService,
     DetailsService,
+    DebugService,
     AuthGuard,
     RoleGuard,
     {

@@ -13,16 +13,16 @@ import { StudentDetailsComponent } from './student-details/student-details.compo
 import { StudentDetailsEditTestComponent } from './student-details-edit-test/student-details-edit-test.component';
 // tslint:disable: max-line-length
 const routes: Routes = [
-  { path:'login', component:LoginComponent },
-  { path:'dashboard', component: DashboardComponent, canActivate: [ AuthGuard ] },
-  { path:'register', component: RegisterComponent, },
-  { path:'notices', component: NoticesComponent, canActivate: [ AuthGuard ] },
-  { path: 'adminonly', component: AdminOnlyTestComponent, data: { role: "Administrator" }, canActivate: [ RoleGuard, AuthGuard ] },
+  { path: 'login', component: LoginComponent },
+  { path: 'dashboard', component: DashboardComponent, canActivate: [ AuthGuard ] },
+  { path: 'register', component: RegisterComponent, data: { role: 'Administrator'}, canActivate: [RoleGuard, AuthGuard]},
+  { path: 'notices', component: NoticesComponent, canActivate: [ AuthGuard ] },
+  { path: 'adminonly', component: AdminOnlyTestComponent, data: { role: 'Administrator' }, canActivate: [ RoleGuard, AuthGuard ] },
   { path: 'addnotice', component: AddNoticeComponent, data: {  role: 'Teacher'}, canActivate: [ RoleGuard, AuthGuard ] },
   { path: 'studentdetails', component: StudentDetailsComponent, canActivate: [ AuthGuard] },
   { path: 'editstudentdetails', component: StudentDetailsEditTestComponent, data: { role: 'Administrator'}, canActivate: [RoleGuard, AuthGuard]},
-  { path:'', redirectTo:'login', pathMatch:"full" },
-  { path:'**', component:LoginComponent }
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: '**', component: LoginComponent }
 ];
 
 @NgModule({

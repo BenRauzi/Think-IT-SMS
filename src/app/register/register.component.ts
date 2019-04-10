@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '../../../node_modules/@angular/common/http';
 import { environment } from '../../environments';
+import { BaseModel } from 'src/models';
+import { MatSnackBar } from '@angular/material';
 
 const API_URL = environment.API_URL;
 
@@ -24,7 +26,7 @@ export class RegisterComponent implements OnInit {
 
   form: FormGroup;
 
-  constructor(private fb: FormBuilder, private http: HttpClient) {
+  constructor(private fb: FormBuilder, private http: HttpClient, private snackBar: MatSnackBar) {
     this.form = this.fb.group({
       username: ['', Validators.required],
       name: ['',[Validators.required]],
@@ -46,8 +48,19 @@ export class RegisterComponent implements OnInit {
     const options = {headers: new HttpHeaders({
       'Content-Type': 'application/json',
   })};
-    this.http.post(`${API_URL}/api/register`, {username: val.username, name: val.name, password: val.password, role: val.role}, options).subscribe(data => {
+    this.http.post(`${API_URL}/api/register`, {username: val.username, name: val.name, password: val.password, role: val.role}, options).subscribe((data: BaseModel) => {
       console.log(data);
+      if(data.msg === "Register Successful"){
+        this.snackBar.open('Successfully Registered User!', 'Ok', {
+          duration: 5000,
+        });
+        this.form.reset();
+      }
+      else{
+        this.snackBar.open('Error when trying to register User', 'Ok', {
+          duration: 5000,
+        });
+      }
     });
   }
 

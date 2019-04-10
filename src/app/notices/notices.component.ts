@@ -11,7 +11,7 @@ let NOTICE_DATA: Notice[];
 })
 export class NoticesComponent implements OnInit {
 
-  dataSource = new MatTableDataSource<Notice>([{title:'Hello',information:'test',teacher:'yes'}]);
+  dataSource = new MatTableDataSource<Notice>([]);
   displayedColumns: string[] = ['title', 'information', 'teacher'];
 
   visible = true;
@@ -21,9 +21,8 @@ export class NoticesComponent implements OnInit {
   
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
-    this.notices.read().subscribe((data: Notice[]) => {
+    this.notices.read().subscribe((data: Notice[]) => { //? api call to get notices
       this.dataSource.data = data;
-      console.log(data);
     }); 
   }
 
