@@ -1,30 +1,50 @@
-<form [formGroup]="form">
-  <fieldset>
-      <mat-form-field color="accent" appearance="outline">
-      <input matInput placeholder="username" name="username" formControlName="username" required>
-      <mat-label>Username</mat-label>
-      <mat-error>{{getErrorMessage('username')}}</mat-error>
-      </mat-form-field>
-      <mat-form-field color="accent" appearance="outline">
-      <input matInput placeholder="name" name="name" formControlName="name" required>
-      <mat-label>Name</mat-label>
-      <mat-error>{{getErrorMessage('name')}}</mat-error>
-      </mat-form-field>
-      <mat-form-field appearance="outline">
-          <input matInput name="password" formControlName="password" type="password" required>
-          <mat-label>Password</mat-label>
-          <mat-error>{{getErrorMessage('password')}}</mat-error>
-      </mat-form-field>
-      <mat-form-field appearance="outline">
-        <mat-select Placeholder="Role" name="role" formControlName="role" required>
-          <mat-option *ngFor="let role of roles" [value]="role.value">
-            {{role.viewValue}}
-          </mat-option>
-        </mat-select>
-        <mat-label>Role</mat-label>
-        <mat-error>{{getErrorMessage('role')}}</mat-error>
-      </mat-form-field>
-  </fieldset>
-  <button mat-button mat-raised-button color="primary" class="button button-primary" [disabled]="!form.valid" (click)="register()">Register</button>
-</form>
-<a routerLink="/dashboard">Dashboard</a>
+<title>Think IT - Register User</title>
+
+<router-outlet></router-outlet>
+<app-navigation></app-navigation>
+
+  <div id="main" (mouseover)="closeNav()">    
+    <form [formGroup]="form">
+        
+          <div align="middle">
+            <svg width="101%" height="20px" align="middle" style="margin-left: -0.5%">
+              <rect width="101%" height="7px"/>
+            </svg>
+            <img src="assets/avatar_1.png" type="Avatar"/>
+            <br/>
+            <h3 align="middle">Register a Student </h3>
+            <br/>
+            <mat-form-field color="accent" appearance="outline">
+            <input matInput placeholder="username" name="username" formControlName="username" required>
+            <mat-label>Username</mat-label>
+            <mat-error>{{getErrorMessage('username')}}</mat-error>
+            </mat-form-field>
+            <br/>
+            <mat-form-field color="accent" appearance="outline">
+            <input matInput placeholder="name" name="name" formControlName="name" required>
+            <mat-label>Name</mat-label>
+            <mat-error>{{getErrorMessage('name')}}</mat-error>
+            </mat-form-field>
+            <br/>
+            <mat-form-field appearance="outline">
+                <input matInput name="password" formControlName="password" type="password" required>
+                <mat-label>Password</mat-label>
+                <mat-error>{{getErrorMessage('password')}}</mat-error>
+            </mat-form-field>
+            <br/>
+            <mat-form-field appearance="outline">
+              <mat-select Placeholder="Role" name="role" formControlName="role" required>
+                <mat-option *ngFor="let role of roles" [value]="role.value">
+                  {{role.viewValue}}
+                </mat-option>
+              </mat-select>
+              <mat-label>Role</mat-label>
+              <mat-error>{{getErrorMessage('role')}}</mat-error>
+            </mat-form-field>
+            <br/>
+            <button mat-button mat-raised-button color="primary" class="button button-primary" [disabled]="!form.valid" (click)="register()">Register</button>
+          </div>
+   
+    </form>
+    <a routerLink="/dashboard">Dashboard</a>
+</div>
