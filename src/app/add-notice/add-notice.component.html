@@ -1,17 +1,23 @@
-<form [formGroup]="form">
-    <fieldset>
-        <h1>Write Notice</h1>
-        <mat-form-field color="accent" appearance="outline">
-          <input matInput name="title" formControlName="title">
-          <mat-label>Title</mat-label>
-          <mat-error>{{getErrorMessage('title')}}</mat-error>
-        </mat-form-field>
-        <mat-form-field appearance="outline">
-            <textarea matInput name="" formControlName="information" type="information"></textarea>
-            <mat-label>Description</mat-label>
-            <mat-error>{{getErrorMessage('information')}}</mat-error>
-        </mat-form-field>
-        <button mat-button mat-raised-button color="primary" class="button button-primary" [disabled]="!form.valid" (click)="addNotice()">Submit</button>
-    </fieldset>
-</form>
-<a routerLink="/dashboard">Dashboard</a>
+<router-outlet></router-outlet>
+<app-navigation></app-navigation>
+
+<div id="main" (mouseover)="closeNav()">    
+    <form [formGroup]="form">
+            <fieldset>
+                <h1>Write Notice</h1>
+                <mat-form-field color="accent" appearance="outline">
+                <input matInput name="title" formControlName="title">
+                <mat-label>Title</mat-label>
+                <mat-error>{{getErrorMessage('title')}}</mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <textarea matInput name="" formControlName="information" type="information"></textarea>
+                    <mat-label>Description</mat-label>
+                    <mat-error>{{getErrorMessage('information')}}</mat-error>
+                </mat-form-field>
+                <button mat-button mat-raised-button color="primary" class="button button-primary" [disabled]="!form.valid" (click)="addNotice()">Submit</button>
+            </fieldset>
+        </form>
+        <a routerLink="/dashboard">Dashboard</a>    
+</div>
+
