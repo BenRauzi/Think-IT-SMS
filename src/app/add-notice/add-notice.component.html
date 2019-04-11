@@ -5,12 +5,12 @@
     <form [formGroup]="form">
             <fieldset>
                 <h1>Write Notice</h1>
-                <mat-form-field color="accent" appearance="outline">
+                <mat-form-field color="accent" appearance="outline" id="title">
                 <input matInput name="title" formControlName="title">
                 <mat-label>Title</mat-label>
                 <mat-error>{{getErrorMessage('title')}}</mat-error>
                 </mat-form-field>
-                <mat-form-field appearance="outline">
+                <mat-form-field appearance="outline" id="description">
                     <textarea matInput name="" formControlName="information" type="information"></textarea>
                     <mat-label>Description</mat-label>
                     <mat-error>{{getErrorMessage('information')}}</mat-error>
