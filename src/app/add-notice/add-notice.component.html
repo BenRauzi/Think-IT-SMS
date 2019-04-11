@@ -1,12 +1,13 @@
+<title>Think IT - Add Notice</title>
+
 <router-outlet></router-outlet>
 <app-navigation></app-navigation>
 
 <div id="main" (mouseover)="closeNav()">    
     <form [formGroup]="form">
             <fieldset>
-                <h1>Add Notice</h1>
-                <h2>Add a new notice for students.</h2>
-                <mat-form-field color="accent" appearance="outline" id="title">
+                <h1>Write Notice</h1>
+                <mat-form-field  color="accent" appearance="outline" id="title">
                 <input matInput name="title" formControlName="title">
                 <mat-label>Title</mat-label>
                 <mat-error>{{getErrorMessage('title')}}</mat-error>
