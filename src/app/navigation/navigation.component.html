@@ -8,25 +8,25 @@
     <b>{{this.auth.user.role}}</b>
 
     <hr><p>Student</p><hr>
-    <a routerLink="/notices" (mouseover)="openNav('none')"><li><i class="fas fa-users"></i> Notices</li></a>
-    <a routerLink="/login" (mouseover)="openNav('none')"><li><i class="fas fa-users"></i> Results</li></a> 
-    <a routerLink="/notices" (mouseover)="openNav('teacher')"><li><i class="fas fa-users"></i> NCEA Summary</li></a>
-    <a routerLink="/studentdetails" (mouseover)="openNav('none')"><li><i class="fas fa-users"></i> Personal Details</li></a>
+    <a routerLink="/notices" (mouseover)="openNav('none')"><li><i class="fas fa-address-book"></i> Notices</li></a>
+    <a (mouseover)="openNav('results')"><li><i class="far fa-list-alt"></i> Results</li></a> 
+    <a (mouseover)="openNav('ncea_summary')"><li><i class="fas fa-poll-h"></i> NCEA Summary</li></a>
+    <a routerLink="/studentdetails" (mouseover)="openNav('none')"><li><i class="fas fa-address-card"></i> Personal Details</li></a>
 
     <div *ngIf="this.auth.user.role === 'Teacher' || this.auth.user.role === 'Administrator'">
     <hr><p>Teacher</p><hr>
-    <a routerLink="/addnotice" (mouseover)="openNav('teacher_notices')"><li><i class="fas fa-users"></i> Add Notice</li></a>
+    <a (mouseover)="openNav('teacher_notices')"><li><i class="fas fa-address-book"></i> Notices</li></a>
     </div>
 
     <div *ngIf="this.auth.user.role === 'Administrator'">
     <hr><p>Admin</p><hr>
     <a routerLink="/register" (mouseover)="openNav('none')"><li><i class="fas fa-users"></i> Register</li></a>
-    <a routerLink="/adminonly" (mouseover)="openNav('none')"><li><i class="fas fa-users"></i> Administration</li></a>
-    <a routerLink="/editstudentdetails" (mouseover)="openNav('none')"><li><i class="fas fa-users"></i> Edit Details</li></a>  
+    <a routerLink="/adminonly" (mouseover)="openNav('none')"><li><i class="fas fa-users-cog"></i> Administration</li></a>
+    <a routerLink="/editstudentdetails" (mouseover)="openNav('none')"><li><i class="fas fa-address-card"></i> Edit Details</li></a>  
     </div>
     
     <hr><p>Actions</p><hr>
-    <a href="javascript:void(0)" (click)="logout()"><li><i class="fas fa-users"></i> Logout</li></a>
+    <a href="javascript:void(0)" (click)="logout()"><li><i class="fas fa-sign-out-alt"></i> Logout</li></a>
     </ul>
   </div>
   <div id="sideNav" class="subNav">
@@ -35,10 +35,12 @@
       <a href="#" class='teacher'>Services</a>
       <a href="/notices" class='teacher_notices'>View Notices</a>
       <a href="/addnotice" class='teacher_notices'>Add Notice</a>
-      <a href="#" class='asd'>Clients3</a>
-      <a href="#" class='asd'>Clients</a>
-      <a href="#" class='asd'>Clients</a>
-      <a href="#" class='Oof'>Contact</a>
+      <a href="/results" class='results'>General Results</a>
+      <a href="/studenttracking" class='results'>Student Tracking</a>
+      <a href="/nceasummary" class='results'>NCEA Summary</a>
+      <a href="/nceasummary" class='ncea_summary'>Current Year</a>
+      <a href="/nceasummary" class='ncea_summary'>NCEA Summary</a>
+     
     </div>
 </body>
 <router-outlet></router-outlet>
