@@ -10,11 +10,13 @@
                 <mat-label>Title</mat-label>
                 <mat-error>{{getErrorMessage('title')}}</mat-error>
                 </mat-form-field>
+                <br/>
                 <mat-form-field appearance="outline" id="description">
                     <textarea matInput name="" formControlName="information" type="information"></textarea>
                     <mat-label>Description</mat-label>
                     <mat-error>{{getErrorMessage('information')}}</mat-error>
                 </mat-form-field>
+                <br/>
                 <button mat-button mat-raised-button color="primary" class="button button-primary" [disabled]="!form.valid" (click)="addNotice()">Submit</button>
             </fieldset>
         </form>
