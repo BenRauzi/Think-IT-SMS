@@ -8,7 +8,7 @@
     <b>{{this.auth.user.role}}</b>
 
     <hr><p>Student</p><hr>
-    <a routerLink="/login" (mouseover)="openNav('teacher')"><li><i class="fas fa-users"></i> Notices</li></a>
+    <a routerLink="/notices" (mouseover)="openNav('none')"><li><i class="fas fa-users"></i> Notices</li></a>
     <a routerLink="/login" (mouseover)="openNav('none')"><li><i class="fas fa-users"></i> Results</li></a> 
     <a routerLink="/notices" (mouseover)="openNav('teacher')"><li><i class="fas fa-users"></i> NCEA Summary</li></a>
     <a routerLink="/studentdetails" (mouseover)="openNav('none')"><li><i class="fas fa-users"></i> Personal Details</li></a>
