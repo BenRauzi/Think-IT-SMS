@@ -58,9 +58,4 @@ export class AddNoticeComponent implements OnInit {
     }
   }
 
-  logout() {
-    localStorage.removeItem('pt-usertoken');
-    this.router.navigate(['/login']);
-  }
-
 }
