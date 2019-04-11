@@ -54,7 +54,7 @@ export class NavigationComponent implements OnInit {
       this.closeNav()
       return
     }
-    const menuItems = ["teacher", "asd","Oof"]
+    const menuItems = ["teacher", "teacher_notices", "asd","Oof"]
     document.getElementById("sideNav").style.width = "10%";
 
     [].forEach.call(document.querySelectorAll('.other'), function (el) {

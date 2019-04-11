@@ -45,7 +45,8 @@
                 padding-left:5px;
                 transition: 200ms all ease-in-out;
                 opacity: 100;
-
+                white-space: nowrap;
+                overflow: hidden;
                 &:hover {
                     ul{
                         opacity:100 !important;
@@ -76,6 +77,8 @@
         text-decoration: none;
         color: #b0b1b4;
         display: block;
+        white-space: nowrap;
+        overflow: hidden;
         
         i {
             padding-right: 5px;
