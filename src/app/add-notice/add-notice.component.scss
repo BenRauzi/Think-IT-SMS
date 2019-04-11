@@ -1,16 +1,24 @@
 fieldset{
     h1{
-       text-align: center; 
+       text-align: center;
+    }
+    h2{
+     margin-left: 8%;
+     background-color: #41a7b8;
+        
     }
     #title{
         text-align: left;
         font-family: 'open sans', sans-serif; 
-        width: 436px;
+        width: 505px;
+        margin-left: 8%;
     }
     #description{
         text-align: left;
         font-family: 'open sans', sans-serif; 
         width: 700px;
+        margin-left: 8%;
+    
     }
 }
 
@@ -21,6 +29,22 @@ fieldset{
     padding-left: 11.5%;
     padding-top: 2.25%;
     word-wrap: break-word;
-    
-    
+    position:absolute;
+
+    left:250px;
+    right:100px;
+    top:52px;
+    width:1000px;
+ 
 }
+.button {
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    left: 15px;
+    top: -17px;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+  }
+
