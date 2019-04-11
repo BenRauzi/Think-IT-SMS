@@ -14,9 +14,12 @@ table{
 .mat-row:nth-child(odd){
     background-color:#f2f2f2;
     }
-    td.mat-cell{
-        border-bottom: none;
-    }
+td.mat-cell{
+    border-bottom: none;
+}
+.th.mat-header-cell{
+    text-align: left;
+}
 #main {
     transition: margin-left .5s;
     width:88%;
