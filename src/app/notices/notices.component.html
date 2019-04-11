@@ -1,18 +1,24 @@
-<table mat-table [dataSource]="this.dataSource" class="">
-  <ng-container matColumnDef="title">
-    <th mat-header-cell *matHeaderCellDef>Title</th>
-    <td mat-cell *matCellDef="let notice"> {{notice.title}} </td>
-  </ng-container>
-  <ng-container matColumnDef="information">
-    <th mat-header-cell *matHeaderCellDef>Information</th>
-    <td mat-cell *matCellDef="let notice"> {{notice.information}} </td>
-  </ng-container>
-  <ng-container matColumnDef="teacher">
-    <th mat-header-cell *matHeaderCellDef>Teacher</th>
-    <td mat-cell *matCellDef="let notice"> {{notice.teacher}} </td>
-  </ng-container>
-  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
-</table>
-<mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
-<a routerLink="/dashboard">Dashboard</a>
+<router-outlet></router-outlet>
+<app-navigation></app-navigation>
+
+<div id="main" (mouseover)="closeNav()">
+   
+        <!-- Main Parts of the Page go in here-->
+        <table mat-table [dataSource]="this.dataSource" class="">
+          <ng-container matColumnDef="title">
+            <th mat-header-cell *matHeaderCellDef>Title</th>
+            <td mat-cell *matCellDef="let notice"> {{notice.title}} </td>
+          </ng-container>
+          <ng-container matColumnDef="information">
+            <th mat-header-cell *matHeaderCellDef>Information</th>
+            <td mat-cell *matCellDef="let notice"> {{notice.information}} </td>
+          </ng-container>
+          <ng-container matColumnDef="teacher">
+            <th mat-header-cell *matHeaderCellDef>Teacher</th>
+            <td mat-cell *matCellDef="let notice"> {{notice.teacher}} </td>
+          </ng-container>
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+        </table>
+        <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</div>
