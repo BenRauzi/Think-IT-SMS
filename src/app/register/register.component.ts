@@ -49,7 +49,6 @@ export class RegisterComponent implements OnInit {
       'Content-Type': 'application/json',
   })};
     this.http.post(`${API_URL}/api/register`, {username: val.username, name: val.name, password: val.password, role: val.role}, options).subscribe((data: BaseModel) => {
-      console.log(data);
       if(data.msg === "Register Successful"){
         this.snackBar.open('Successfully Registered User!', 'Ok', {
           duration: 5000,
@@ -57,7 +56,7 @@ export class RegisterComponent implements OnInit {
         this.form.reset();
       }
       else{
-        this.snackBar.open('Error when trying to register User', 'Ok', {
+        this.snackBar.open(`Error when trying to register User: ${data["msg"]}`, 'Ok', {
           duration: 5000,
         });
       }
