@@ -34,6 +34,7 @@ export class AddNoticeComponent implements OnInit {
           this.snackBar.open('Notice created Successfully', 'Ok', {
             duration: 5000,
           });
+          this.form.reset()
         }
       });
     }

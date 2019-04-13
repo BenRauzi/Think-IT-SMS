@@ -3,26 +3,33 @@
 
 <div id="main" (mouseover)="closeNav()">    
     <form [formGroup]="form">
-            <fieldset>
-                <h1>Add Notice</h1>
-                <h2>Add a new notice for students.</h2>
-                <mat-form-field color="accent" appearance="outline" id="title">
+            
+        
+        <div align="middle">
+            <svg width="101%" height="20px" align="middle" style="margin-left: -0.5%">
+              <rect width="101%" height="7px"/>
+            </svg>
+            <img src="assets/avatar_1.png" type="Avatar"/>
+            <br/>
+            <h3 align="middle">Add a notice</h3>
+            <br/>
+            <mat-form-field color="accent" appearance="outline" id="title">
                 <input matInput name="title" formControlName="title">
                 <mat-label>Title</mat-label>
                 <mat-error>{{getErrorMessage('title')}}</mat-error>
-                </mat-form-field>
-                <br/>
-            
-                <mat-form-field appearance="outline" id="description">
-                    <textarea matInput name="" formControlName="information" type="information"></textarea>
-                    <mat-label>Description</mat-label>
-                    <mat-error>{{getErrorMessage('information')}}</mat-error>
-                </mat-form-field>
-                
-                <button mat-button mat-raised-button color="primary" class="button button-primary" id="Submit" [disabled]="!form.valid" (click)="addNotice()">Submit</button>
-            </fieldset>
-        </form>
-        <a routerLink="/dashboard">Dashboard</a>    
+            </mat-form-field>
+            <br/>
+            <mat-form-field appearance="outline" id="description">
+                <textarea matInput name="" formControlName="information" type="information"></textarea>
+                <mat-label>Description</mat-label>
+                <mat-error>{{getErrorMessage('information')}}</mat-error>
+            </mat-form-field>
+            <br/>  
+            <button mat-button mat-raised-button color="primary" class="button button-primary" id="Submit" [disabled]="!form.valid" (click)="addNotice()">Submit</button>
+        
+        </div>
+   
+    </form>
 </div>
 
 
