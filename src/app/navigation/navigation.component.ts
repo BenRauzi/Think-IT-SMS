@@ -73,14 +73,18 @@ export class NavigationComponent implements OnInit {
     })
 
     document.getElementById("main").style.marginLeft = "192px";
-    document.getElementById("ribbon").style.marginLeft = "192px";
+    try {
+     document.getElementById("ribbon").style.marginLeft = "192px";
+    } catch(e){}
   }
 
   closeNav() {
     if ( document.getElementById("sideNav").style.width != "") {
       document.getElementById("sideNav").style.width = "0";
       document.getElementById("main").style.marginLeft = "0%";
-      document.getElementById("ribbon").style.marginLeft = "0%";
+      try {
+        document.getElementById("ribbon").style.marginLeft = "0%";
+      } catch(err) {}
     }
   }
 }

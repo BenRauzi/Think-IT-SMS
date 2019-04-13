@@ -114,4 +114,14 @@ export class StudentDetailsEditTestComponent implements OnInit {
     this.studentDetails = Object.assign({}, this.oldStudentDetails);
   }
 
+  closeNav() {
+    if ( document.getElementById("sideNav").style.width != "") {
+      document.getElementById("sideNav").style.width = "0";
+      document.getElementById("main").style.marginLeft = "0%";
+      try {
+        document.getElementById("ribbon").style.marginLeft = "0%";
+      } catch(err) {}
+    }
+  }
+
 }

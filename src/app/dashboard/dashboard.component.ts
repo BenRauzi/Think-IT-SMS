@@ -52,7 +52,11 @@ export class DashboardComponent implements OnInit {
     if ( document.getElementById("sideNav").style.width != "") {
       document.getElementById("sideNav").style.width = "0";
       document.getElementById("main").style.marginLeft = "0%";
-      document.getElementById("ribbon").style.marginLeft = "0%";
+      try {
+        document.getElementById("ribbon").style.marginLeft = "0%";
+      } catch(err) {}
     }
   }
+
+
 }
