@@ -22,6 +22,13 @@ export class AddNoticeComponent implements OnInit {
   }
 
   ngOnInit() {
+    setTimeout(() => 
+    {
+      this.snackBar.open("Image will be replaced momentarily", 'Ok', {
+        duration: 5000,
+      })
+    },
+    500);
   }
 
   addNotice() {

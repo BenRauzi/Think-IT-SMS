@@ -13,8 +13,8 @@
             <br/>
             <h3 align="middle">Add a notice</h3>
             <br/>
-            <mat-form-field color="accent" appearance="outline" id="title">
-                <input matInput name="title" formControlName="title">
+            <mat-form-field color="accent" appearance="outline" id="title" width="100px">
+                <input  matInput name="title" formControlName="title">
                 <mat-label>Title</mat-label>
                 <mat-error>{{getErrorMessage('title')}}</mat-error>
             </mat-form-field>
@@ -25,7 +25,7 @@
                 <mat-error>{{getErrorMessage('information')}}</mat-error>
             </mat-form-field>
             <br/>  
-            <button mat-button mat-raised-button color="primary" class="button button-primary" id="Submit" [disabled]="!form.valid" (click)="addNotice()">Submit</button>
+            <button mat-button mat-raised-button color="primary" type="reset" class="button button-primary" id="Submit" [disabled]="!form.valid" (click)="addNotice()">Submit</button>
         
         </div>
    
