@@ -62,7 +62,7 @@ export class NavigationComponent implements OnInit {
 
   getProfileImage(){
     this.details.getProfileImage().subscribe((result: ImageDto) => {
-      if(!result.image !== null){
+      if(result.image != "null"){
         (document.getElementById('avatarImage') as HTMLImageElement).src = result.image;
       }
     });
