@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule, MatInputModule, MatFormFieldModule, MatCardModule, MatSelectModule, MatOptionModule, MatSnackBarModule, MatTableModule, MatProgressSpinnerModule, MatPaginatorModule } from '@angular/material';
+import { MatButtonModule, MatInputModule, MatFormFieldModule, MatCardModule, MatSelectModule, MatOptionModule, MatSnackBarModule, MatTableModule, MatProgressSpinnerModule, MatPaginatorModule, MAT_DIALOG_DEFAULT_OPTIONS, MatDialogRef, MatDialog, MatDialogModule } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AuthGuard, RoleGuard } from '../guards';
@@ -20,7 +20,7 @@ import { NoticesComponent } from './notices/notices.component';
 import { AddNoticeComponent } from './add-notice/add-notice.component';
 import { StudentDetailsComponent } from './student-details/student-details.component';
 import { StudentDetailsEditTestComponent } from './student-details-edit-test/student-details-edit-test.component';
-import { NavigationComponent } from './navigation/navigation.component';
+import { NavigationComponent, ConfirmBoxDialog } from './navigation/navigation.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +33,8 @@ import { NavigationComponent } from './navigation/navigation.component';
     AddNoticeComponent,
     StudentDetailsComponent,
     StudentDetailsEditTestComponent,
-    NavigationComponent
+    NavigationComponent,
+    ConfirmBoxDialog
   ],
   imports: [
     BrowserModule,
@@ -51,9 +52,12 @@ import { NavigationComponent } from './navigation/navigation.component';
     MatSnackBarModule,
     MatTableModule,
     MatPaginatorModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatDialogModule
   ],
   providers: [
+    {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}},
+    {provide: MatDialogRef, useValue: {}},
     AuthService,
     ApiService,
     NoticesService,
@@ -68,6 +72,7 @@ import { NavigationComponent } from './navigation/navigation.component';
     }
 
   ],
+  entryComponents: [ConfirmBoxDialog],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

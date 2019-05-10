@@ -8,6 +8,40 @@
     color: white;
     text-align: center;
     z-index: 1;
+    .avatar{
+        :before{
+            content: "";
+	display: block;
+	padding-top: 100%;
+        }
+        margin-top: 20px;
+        margin-bottom: -20px;
+        width: 50%;
+        height: auto;
+        position: relative;
+        border-radius: 50%;
+        // border: 2px solid white;
+        background-color: black;
+        p{
+            color: orange;
+            position: absolute;
+            display: none;
+            top: 50%;
+            bottom: 50%;
+            transform: translate(-50%, -50%);
+        }
+        img{
+            width: 100%;
+            border-radius: 50%;
+        }
+        img:hover{
+            opacity: 0.5;
+            
+            + p{
+                display: block;
+            }
+        }
+    }
     hr{
         border-color: #41a7b8;
         width: 80%;
@@ -15,12 +49,12 @@
         margin-top: 5px;
         margin-bottom: 5px;
     }
-    img{
-        margin-top: 20px;
-        margin-bottom: -20px;
-        width: 50%;
-        border-radius: 50%;
-    }
+    // img{
+    //     margin-top: 20px;
+    //     margin-bottom: -20px;
+    //     width: 50%;
+    //     border-radius: 50%;
+    // }
     p{
         color: white;
         text-align: center;
@@ -104,5 +138,24 @@
             opacity: 100;
             transition: 0.1s all ease-in;
         }
+    }
+}
+#avatarInput{
+    opacity: 0;
+}
+
+.avatarContainer{
+    height: 200px;
+    width: 200px;
+    overflow: hidden;
+    border-radius: 200px;
+    img{
+        height: 200px;
+    }
+    input{
+        position: relative;
+        height: 200px;
+        width: 200px;
+        top: -205px;
     }
 }

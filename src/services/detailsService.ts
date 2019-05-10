@@ -39,4 +39,14 @@ export class DetailsService{
         })};
         return this.http.put(`${API_URL}/api/student/details`, student, options);
     }
+
+    getProfileImage(){
+        return this.http.get(`${API_URL}/api/profileimage`)
+    }
+    updateProfileImage(image){
+        const options = {headers: new HttpHeaders({
+            'Content-Type': 'application/json',
+        })};
+        return this.http.put(`${API_URL}/api/profileimage`, {image}, options);
+    }
 }
