@@ -1,0 +1,6 @@
+<img [src]="this.data.image">
+<p>Do you want to use this image as your profile picture?</p>
+<div mat-dialog-actions>
+    <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Yes</button>
+    <button mat-button (click)="onNoClick()">No</button>
+</div>

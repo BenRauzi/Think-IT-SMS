@@ -1,7 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService, ApiService } from '../../services';
+import { AuthService, ApiService, DetailsService, DebugService } from '../../services';
+import { ImageDto } from 'src/dto';
 import { UserModel } from 'src/models';
+import { MatSnackBar, MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
+
+export interface DialogData {
+  image: string;
+}
+
 @Component({
   selector: 'app-navigation',
   templateUrl: './navigation.component.html',
@@ -9,14 +16,77 @@ import { UserModel } from 'src/models';
 })
 export class NavigationComponent implements OnInit {
 
-  constructor(private router: Router, public auth: AuthService, private api: ApiService) { }
+// tslint:disable-next-line: max-line-length
+  constructor(private debug: DebugService, private router: Router, public auth: AuthService, private api: ApiService, private snackBar: MatSnackBar, public dialog: MatDialog, private details: DetailsService) { }
 
   role: string;
 
   isTeacher = false;
   isAdmin = false;
+
+  newImage: string;
+
   ngOnInit() {
     this.checkPermission();
+    this.getProfileImage();
+  }
+  
+  changeAvatar() {
+    const file = (document.getElementById('avatarInput') as HTMLInputElement).files[0];
+    const Image = document.createElement('img');
+    const reader = new FileReader();
+
+    reader.addEventListener('load', () => {
+      Image.src = (reader.result as string);
+      Image.onload = () => {
+        const width = Image.naturalWidth;
+        const height = Image.naturalHeight;
+        if (width === height && width <= 600) {
+          this.newImage = Image.src as string;
+          this.openDialog(this.newImage);
+        } else {
+          this.snackBar.open('Image must be square and equal to or less than 600x600', 'Ok', {
+            duration: 5000,
+          });
+        }
+        console.log(Image.naturalWidth, Image.naturalHeight);
+      }; 
+      // preview.src = (reader.result as string);
+    }, false);
+
+    if (file) {
+      reader.readAsDataURL(file);
+    }
+
+  }
+
+  getProfileImage(){
+    this.details.getProfileImage().subscribe((result: ImageDto) => {
+      if(!result.image !== null){
+        (document.getElementById('avatarImage') as HTMLImageElement).src = result.image;
+      }
+    });
+  }
+
+  openDialog(image): void {
+    console.log(this.dialog);
+// tslint:disable-next-line: no-use-before-declare
+    const dialogRef = this.dialog.open(ConfirmBoxDialog, {
+      width: '600px',
+      height: '400px',
+      data: {image}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      if (result === true) {
+        (document.getElementById('avatarImage') as HTMLImageElement).src = this.newImage;
+        this.debug.ping();
+        this.details.updateProfileImage(this.newImage).subscribe((result2) => {
+          console.log(result2);
+        });
+      }
+    });
   }
 
   async checkPermission() {
@@ -51,10 +121,10 @@ export class NavigationComponent implements OnInit {
   openNav(menu) {
 
     if (menu == "none") {
-      this.closeNav()
-      return
+      this.closeNav();
+      return;
     }
-    const menuItems = ["teacher", "teacher_notices", "results","ncea_summary"]
+    const menuItems = ["teacher", "teacher_notices", "results","ncea_summary"];
     document.getElementById("sideNav").style.width = "192px";
 
     [].forEach.call(document.querySelectorAll('.other'), function (el) {
@@ -70,7 +140,7 @@ export class NavigationComponent implements OnInit {
           el.style.display = 'block';
         });
       }
-    })
+    });
 
     document.getElementById("main").style.marginLeft = "192px";
     try {
@@ -87,4 +157,21 @@ export class NavigationComponent implements OnInit {
       } catch(err) {}
     }
   }
+}
+
+@Component({
+  selector: 'confirm-box-dialog',
+  templateUrl: 'confirm-box-dialog.html',
+  styleUrls: ['./confirmBox.scss']
+})
+export class ConfirmBoxDialog {
+
+  constructor(
+    public dialogRef: MatDialogRef<ConfirmBoxDialog>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
 }
