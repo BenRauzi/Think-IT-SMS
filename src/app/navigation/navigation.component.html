@@ -18,6 +18,7 @@
     <div *ngIf="this.auth.user.role === 'Teacher' || this.auth.user.role === 'Administrator'">
     <hr><p>Teacher</p><hr>
     <a (mouseover)="openNav('teacher_notices')"><li><i class="fas fa-address-book"></i> Notices</li></a>
+    <a (mouseover)="openNav('none')"><li><i class="fas fa-male"></i> Students</li></a>
     </div>
 
     <div *ngIf="this.auth.user.role === 'Administrator'">
@@ -42,7 +43,6 @@
       <a href="/nceasummary" class='results'>NCEA Summary</a>
       <a href="/nceasummary" class='ncea_summary'>Current Year</a>
       <a href="/nceasummary" class='ncea_summary'>NCEA Summary</a>
-     
     </div>
 </body>
 <router-outlet></router-outlet>
