@@ -21,6 +21,7 @@ import { AddNoticeComponent } from './add-notice/add-notice.component';
 import { StudentDetailsComponent } from './student-details/student-details.component';
 import { StudentDetailsEditTestComponent } from './student-details-edit-test/student-details-edit-test.component';
 import { NavigationComponent, ConfirmBoxDialog } from './navigation/navigation.component';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { NavigationComponent, ConfirmBoxDialog } from './navigation/navigation.c
     StudentDetailsComponent,
     StudentDetailsEditTestComponent,
     NavigationComponent,
-    ConfirmBoxDialog
+    ConfirmBoxDialog,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
