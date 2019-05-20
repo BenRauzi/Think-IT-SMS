@@ -1,13 +1,20 @@
 <router-outlet></router-outlet>
 <app-navigation></app-navigation>
 <div id="main">
-    <h1>Search</h1>
-    <fieldset class="searchfieldset">
+  <h1>Search</h1>
     <p>Keywords:</p>
     <mat-form-field color="accent" appearance="outline" class="keywords">
     <input matInput name="search" formControlName="search">
     </mat-form-field>
-    <i class="fas fa-search"></i>
-  </fieldset>
-  </div>
+    <!--This here is where you would add the search function call-->
+    <a href="" style="color: black; ">
+    <i class="fas fa-search" style="font-size: 27px; padding-left: 20px;"></i>
+    </a>
+    <mat-slider
+  thumbLabel
+  [displayWith]="formatLabel"
+  tickInterval="1000"
+  min="1"
+  max="100000"></mat-slider>
+</div>
 
