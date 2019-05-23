@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule, MatInputModule, MatFormFieldModule, MatCardModule, MatSelectModule, MatOptionModule, MatSnackBarModule, MatTableModule, MatProgressSpinnerModule, MatPaginatorModule, MAT_DIALOG_DEFAULT_OPTIONS, MatDialogRef, MatDialog, MatDialogModule, MatSliderModule } from '@angular/material';
+import { MatButtonModule, MatInputModule, MatFormFieldModule, MatCardModule, MatSelectModule, MatOptionModule, MatSnackBarModule, MatTableModule, MatProgressSpinnerModule, MatPaginatorModule, MAT_DIALOG_DEFAULT_OPTIONS, MatDialogRef, MatDialog, MatDialogModule, MatSliderModule, MatAutocompleteModule } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AuthGuard, RoleGuard } from '../guards';
@@ -22,6 +22,7 @@ import { StudentDetailsComponent } from './student-details/student-details.compo
 import { StudentDetailsEditTestComponent } from './student-details-edit-test/student-details-edit-test.component';
 import { NavigationComponent, ConfirmBoxDialog } from './navigation/navigation.component';
 import { SearchComponent } from './search/search.component';
+import {FormControl} from '@angular/forms';
 
 @NgModule({
   declarations: [
