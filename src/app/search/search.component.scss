@@ -6,11 +6,8 @@
     padding-top: 37px;
     word-wrap: break-word;
     }
-.keywords{
+.keywordssearchbox{
     width: 500px;
-}
-.searchfieldset{
-width: 50%;
 }
 .example-form {
     min-width: 150px;
@@ -20,4 +17,9 @@ width: 50%;
   
   .example-full-width {
     width: 100%;
+  }
+  .sexpicker{
+    mat-radio-button{
+    font-size: 30px;
+    }
   }
