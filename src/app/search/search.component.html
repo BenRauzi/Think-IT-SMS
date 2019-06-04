@@ -12,7 +12,32 @@
     </a>
     <br/>
       <div class="searchoptions">
-        
+        <button mat-button mat-raised-button color="primary" class="button button-primary" (click)="openSnackBar(age, close)">Year<br/><i class="fas fa-users"></i></button>
+        <button mat-button mat-raised-button color="primary" class="button button-primary" (click)="openSnackBar(age, close)">Class<br/><i class="fas fa-chalkboard-teacher"></i></button>
+        <button mat-button mat-raised-button color="primary" class="button button-primary" (click)="openSnackBar(age, close)">Subject<br/><i class="fas fa-book"></i></button>
+        <button mat-button mat-raised-button color="primary" class="ethnicity button button-primary" (click)="openSnackBar(age, close)">Ethnicity<br/><i class="fas fa-male"></i>&nbsp; <i class="fas fa-male"></i>&nbsp; <i class="fas fa-male" id="white"></i></button>
+        <br/>
+        <button mat-button mat-raised-button color="primary" class="button button-primary" (click)="openSnackBar(age, close)">House<br/><i class="fas fa-home"></i></button>
+        <button mat-button mat-raised-button color="primary" class="button button-primary" (click)="openSnackBar(age, close)">Gender<br/><i class="fas fa-female"></i>&nbsp; <i class="fas fa-male"></i></button>
+        <button mat-button mat-raised-button color="primary" class="button button-primary" (click)="openSnackBar(age, close)">Credits<br/><i class="fas fa-id-card"></i></button>
+        <button mat-button mat-raised-button color="primary" class="button button-primary" (click)="openSnackBar(age, close)">Age<br/><i class="far fa-calendar-alt"></i></button>
       </div>
+      <!--This is the database drawn into a table-->
+      <table mat-table class="mat-elevation-z8">
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef>Name</th>
+          <td mat-cell *matCellDef="let element">Isaac</td>
+          <td mat-cell *matCellDef="let element">Ben</td>
+        </ng-container>
+        <ng-container matColumnDef="curclass">
+          <th mat-header-cell *matHeaderCellDef>Cur.Class</th>
+          <td mat-cell *matCellDef="let element">12DT</td>
+          <td mat-cell *matCellDef="let element">12DT</td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+      </table>        
 </div>
 
