@@ -29,6 +29,12 @@ export class NavigationComponent implements OnInit {
   ngOnInit() {
     this.checkPermission();
     this.getProfileImage();
+
+    if(this.auth.user.username == null) {
+      this.auth.user.username = localStorage.getItem('pt-username');
+      document.getElementById("name").innerHTML = this.auth.user.username;
+   
+    }
   }
   
   changeAvatar() {
@@ -115,6 +121,7 @@ export class NavigationComponent implements OnInit {
 
   logout() {
     localStorage.removeItem('pt-usertoken');
+    localStorage.removeItem('pt-name');
     this.router.navigate(['/login']);
   }
 

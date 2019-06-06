@@ -1,30 +1,23 @@
-#main {
-    transition: margin-left .5s;
-    widows: 88%;
-    max-width: 89%;
-    padding-left: 11.5%;
-    padding-top: 2.25%;
-    h3 {
-        color: #8c8c8c;
-    }
-    div {
-        margin-left: 30%;
-        width:400px;
-        word-wrap: break-word;
-        background-color: #fcfcfc;
-        padding-bottom:8px;
-        border-radius: 6px;
-        img{
-            margin-top: 20px;
-            margin-bottom: 20px;
-            width: 40%;
-            border-radius: 50%;
-        }
-        svg{
-            rect {
-               fill: #41a7b8;
-            }
-        };
-    }
-}
 
+h3 {
+    color: #8c8c8c;
+}
+div {
+    margin-left: 30%;
+    width:400px;
+    word-wrap: break-word;
+    background-color: #fcfcfc;
+    padding-bottom:8px;
+    border-radius: 6px;
+    img{
+        margin-top: 20px;
+        margin-bottom: 20px;
+        width: 40%;
+        border-radius: 50%;
+    }
+    svg{
+        rect {
+            fill: #41a7b8;
+        }
+    };
+}

@@ -58,6 +58,8 @@ export class LoginComponent implements OnInit {
     this.auth.login("TestAdmin", "passingword").subscribe((data: TokenDto) => {
       localStorage.setItem('pt-usertoken', data.token);
       this.auth.user.role = data.user.role;
+      this.auth.user.username = "Admin Account";
+
       this.router.navigate(['/dashboard']);
     });
   }
@@ -66,6 +68,7 @@ export class LoginComponent implements OnInit {
     this.auth.login("TestTeach", "passingword").subscribe((data: TokenDto) => {
       localStorage.setItem('pt-usertoken', data.token);
       this.auth.user.role = data.user.role;
+      this.auth.user.username = "Teacher Account";
       this.router.navigate(['/dashboard']);
     });
   }
@@ -74,6 +77,7 @@ export class LoginComponent implements OnInit {
     this.auth.login("TestStu", "passingword").subscribe((data: TokenDto) => {
       localStorage.setItem('pt-usertoken', data.token);
       this.auth.user.role = data.user.role;
+      this.auth.user.username = "Student Account";
       this.router.navigate(['/dashboard']);
     });
   }
@@ -84,7 +88,9 @@ export class LoginComponent implements OnInit {
       console.log(data);
       if (data.token) {
           localStorage.setItem('pt-usertoken', data.token);
+          localStorage.setItem('pt-username', data.user.username);
           this.auth.user.role = data.user.role;
+          this.auth.user.username = data.user.username;
           this.router.navigate(['/dashboard']);
       } else {
           this.snackBar.open('Username/Password was incorrect', 'Ok', {

@@ -1,5 +1,44 @@
+
+header{
+    width: calc(100% - 30px);
+    height: 50px;
+    padding: 0 15px;
+    top: 0;
+    background-color: #1c1c1c;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    position: fixed;
+    align-items: center;
+    .left {
+        color: white;
+    }
+    .right {
+        font-size: 14px;
+        color: white;
+        div {
+            display: inline-block;
+            vertical-align: middle;
+        };
+  
+        a {
+            color: white;
+            text-decoration: none;
+        }
+    }
+  }
+
+  #main {
+    transition: margin-left .5s;
+    width:88%;
+    max-width: 89%;
+    padding-left: 220px;
+    padding-top: 37px;
+    word-wrap: break-word;
+}
+
 .navbar {
-    background: #424142;
+    background: #323130;
     width: 210px;
     height: 100%;
     top:50px;
@@ -94,7 +133,7 @@
     top: 50px; 
     left: 5;
     margin-left: 210px;
-    background-color: #515051; 
+    background-color: #323130; 
     overflow-x: hidden; 
     transition: 0.5s; 
     padding-top: 10px;
@@ -134,14 +173,13 @@
 }
 
 .avatarContainer{
-    height: 150px;
-    width: 150px;
+    height: 40px;
+    width: 40px;
     overflow: hidden;
-    border-radius: 150px;
-    margin-left:30px;
-    margin-top:25px;
+    border-radius: 40px;
     img{
         height: 100%;
+        vertical-align:  middle;
     }
     input{
         position: relative;
@@ -149,4 +187,39 @@
         width: 200px;
         top: -205px;
     }
+}
+
+.role {
+    padding-right: 10px;
+};
+
+.navHeader {
+    position: relative;
+    p {    
+        text-align: left;
+        position: relative;
+        padding-left: 25px;
+        font-size: 10px;
+        width: 210px;
+        overflow: hidden;
+        span {
+            margin-left: 5px;
+            margin-right: 5px;   
+        }
+        &:before, &:after {
+            position: absolute;
+            overflow: hidden;
+            width: 54%;
+            top: 45%;
+            height: 1px;
+            content: '\a0';
+            background-color: grey;
+        }
+        &:before {
+            margin-left: -54%;
+            text-align: right;
+        }
+       
+    }
+
 }

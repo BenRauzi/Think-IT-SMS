@@ -23,33 +23,6 @@ $candy-app-theme: mat-light-theme($candy-app-primary, $candy-app-accent, $candy-
     --text-colour1: #ffffff;
 }
 
-header{
-  width: calc(100% - 30px);
-  height: 50px;
-  padding: 0 15px;
-  top: 0;
-  background-color: #363537;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  position: fixed;
-  align-items: center;
-  .left {
-      color: white;
-  }
-  .right {
-      font-size: 14px;
-      text-align: right;
-      color: white;
-      width:520px;
-      overflow-x: hidden;
-
-      a {
-          color: white;
-          text-decoration: none;
-      }
-  }
-}
 body{
   margin: 0px;
   max-width: 100%;
@@ -78,3 +51,12 @@ body{
   ::-webkit-scrollbar-thumb:hover {
     background: #555; 
   }
+
+  #main {
+    transition: margin-left .5s;
+    width:88%;
+    max-width: 89%;
+    padding-left: 220px;
+    padding-top: 37px;
+    word-wrap: break-word;
+}

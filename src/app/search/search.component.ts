@@ -11,7 +11,6 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 })
 
 export class SearchComponent implements OnInit {
-  constructor(private _snackBar: MatSnackBar) {}
 
   ngOnInit() {
   }
@@ -26,9 +25,7 @@ export class SearchComponent implements OnInit {
     }
   }
   openSnackBar(message: string, action: string) {
-    this._snackBar.open(message, action, {
-      duration: 2000,
-    });
+    //
   }
   yearDialog():void{
 
@@ -53,16 +50,3 @@ const ELEMENT_DATA: PeriodicElement[] = [
   {position: 9, name: 'Fluorine', weight: 18.9984, curclass: 'F'},
   {position: 10, name: 'Neon', weight: 20.1797, curclass: 'Ne'},
 ];
-
-/**
- * @title Basic use of `<table mat-table>`
- */
-@Component({
-  selector: 'table-basic-example',
-  styleUrls: ['table-basic-example.css'],
-  templateUrl: 'table-basic-example.html',
-})
-export class TableBasicExample {
-  displayedColumns: string[] = ['position', 'name', 'weight', 'curclass'];
-  dataSource = ELEMENT_DATA;
-}

@@ -12,11 +12,15 @@ export class DashboardComponent implements OnInit {
   constructor(private router: Router, public auth: AuthService, private api: ApiService) { }
 
   role: string;
+  username: string;
 
   isTeacher = false;
   isAdmin = false;
   ngOnInit() {
     this.checkPermission();
+    if(this.auth.user.username == "undefined") {
+        this.auth.user.username = localStorage.getItem('pt-username');   
+    }
   }
 
   async checkPermission() {
@@ -45,6 +49,7 @@ export class DashboardComponent implements OnInit {
 
   logout() {
     localStorage.removeItem('pt-usertoken');
+    localStorage.removeItem('pt-username');
     this.router.navigate(['/login']);
   }
 

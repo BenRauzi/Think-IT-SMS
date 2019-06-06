@@ -1,3 +1,28 @@
+header{
+    width: calc(100% - 30px);
+    height: 50px;
+    padding: 0 15px;
+    top: 0;
+    background-color: #1c1c1c;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    position: fixed;
+    align-items: center;
+    .left {
+        color: white;
+    }
+    .right {
+        font-size: 14px;
+        color: white;
+  
+        a {
+            color: white;
+            text-decoration: none;
+        }
+    }
+  }
+
 mat-label{
     color: #002b53;
 }
