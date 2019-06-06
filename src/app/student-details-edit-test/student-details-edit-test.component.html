@@ -1,189 +1,192 @@
+<router-outlet></router-outlet>
+<app-navigation></app-navigation>
 <title>Think IT - Edit Details</title>
-
-<div class="modal_grey" *ngIf="this.loading">
-  <mat-spinner></mat-spinner>
-</div>
-<form [formGroup]="student">
-  <fieldset>
+<div id="main">
+  <div class="modal_grey" *ngIf="this.loading">
+    <mat-spinner></mat-spinner>
+  </div>
+  <form [formGroup]="student">
+    <fieldset>
+        <mat-form-field appearance="outline">
+          <mat-select (selectionChange)="this.changeStudent($event)" Placeholder="Student" name="studentsSelect" formControlName="studentsSelect" required>
+            <mat-option *ngFor="let student of students" [value]="student.UserID">
+              {{student.Name}}
+            </mat-option>
+          </mat-select>
+          <mat-label>Student</mat-label>
+        </mat-form-field>
+    </fieldset>
+  </form>
+  <form [formGroup]="StudentDetails">
+    <fieldset>
       <mat-form-field appearance="outline">
-        <mat-select (selectionChange)="this.changeStudent($event)" Placeholder="Student" name="studentsSelect" formControlName="studentsSelect" required>
-          <mat-option *ngFor="let student of students" [value]="student.UserID">
-            {{student.Name}}
-          </mat-option>
-        </mat-select>
-        <mat-label>Student</mat-label>
+        <input matInput name="FirstName" formControlName="FirstName" [(ngModel)]="studentDetails.FirstName" >
+        <mat-label>First Name</mat-label>
       </mat-form-field>
-  </fieldset>
-</form>
-<form [formGroup]="StudentDetails">
-  <fieldset>
-    <mat-form-field appearance="outline">
-      <input matInput name="FirstName" formControlName="FirstName" [(ngModel)]="studentDetails.FirstName" >
-      <mat-label>First Name</mat-label>
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-      <input matInput name="ForeNames" formControlName="ForeNames" [(ngModel)]="studentDetails.ForeNames" >
-      <mat-label>Fore Names</mat-label>
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-      <input matInput name="LastName" formControlName="LastName" [(ngModel)]="studentDetails.LastName" >
-      <mat-label>Last Name</mat-label>
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-      <input matInput name="DateOfBirth" formControlName="DateOfBirth" [(ngModel)]="studentDetails.DateOfBirth" >
-      <mat-label>Date Of Birth</mat-label>
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-      <input matInput name="NSN" formControlName="NSN" [(ngModel)]="studentDetails.NSN" >
-      <mat-label>National Student Number</mat-label>
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-      <input matInput name="HomePhone" formControlName="HomePhone" [(ngModel)]="studentDetails.HomePhone" >
-      <mat-label>Home Phone</mat-label>
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-      <input matInput name="PhysicalUnitNo" formControlName="PhysicalUnitNo" [(ngModel)]="studentDetails.PhysicalUnitNo" >
-      <mat-label>Physical Unit Number</mat-label>
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-      <input matInput name="PhysicalNumber" formControlName="PhysicalNumber" [(ngModel)]="studentDetails.PhysicalNumber" >
-      <mat-label>Physical Street Number</mat-label>
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-      <input matInput name="PhysicalStreet" formControlName="PhysicalStreet" [(ngModel)]="studentDetails.PhysicalStreet" >
-      <mat-label>Physical Street Name</mat-label>
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-      <input matInput name="PhysicalRuralDelivery" formControlName="PhysicalRuralDelivery" [(ngModel)]="studentDetails.PhysicalRuralDelivery" >
-      <mat-label>Physical Rural Delivery</mat-label>
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-      <input matInput name="PhysicalSuburb" formControlName="PhysicalSuburb" [(ngModel)]="studentDetails.PhysicalSuburb" >
-      <mat-label>Physical Suburb</mat-label>
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-      <input matInput name="PhysicalPostcode" formControlName="PhysicalPostcode" [(ngModel)]="studentDetails.PhysicalPostcode" >
-      <mat-label>Physical Postcode</mat-label>
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-      <input matInput name="PostalUnitNo" formControlName="PostalUnitNo" [(ngModel)]="studentDetails.PostalUnitNo" >
-      <mat-label>Postal Unit Number</mat-label>
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-      <input matInput name="PostalNumber" formControlName="PostalNumber" [(ngModel)]="studentDetails.PostalNumber" >
-      <mat-label>Postal Street Number</mat-label>
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-      <input matInput name="PostalStreet" formControlName="PostalStreet" [(ngModel)]="studentDetails.PostalStreet" >
-      <mat-label>Postal Street Name</mat-label>
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-      <input matInput name="PostalRuralDelivery" formControlName="PostalRuralDelivery" [(ngModel)]="studentDetails.PostalRuralDelivery" >
-      <mat-label> Postal Rural Delivery</mat-label>
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-      <input matInput name="PostalSuburb" formControlName="PostalSuburb" [(ngModel)]="studentDetails.PostalSuburb" >
-      <mat-label>Postal Suburb</mat-label>
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-      <input matInput name="PostalPostcode" formControlName="PostalPostcode" [(ngModel)]="studentDetails.PostalPostcode" >
-      <mat-label>Postal Postcode</mat-label>
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-      <input matInput name="CaregiverOneRelationship" formControlName="CaregiverOneRelationship" [(ngModel)]="studentDetails.CaregiverOneRelationship" >
-      <mat-label>Caregiver One Relationship</mat-label>
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-      <input matInput name="CaregiverOneName" formControlName="CaregiverOneName" [(ngModel)]="studentDetails.CaregiverOneName" >
-      <mat-label>Caregiver One Name</mat-label>
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-      <input matInput name="CaregiverOneAddress" formControlName="CaregiverOneAddress" [(ngModel)]="studentDetails.CaregiverOneAddress" >
-      <mat-label>Caregiver One Address</mat-label>
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-      <input matInput name="CaregiverOneHomePhone" formControlName="CaregiverOneHomePhone" [(ngModel)]="studentDetails.CaregiverOneHomePhone" >
-      <mat-label>Caregiver One Home Phone</mat-label>
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-      <input matInput name="CaregiverOneMobilePhone" formControlName="CaregiverOneMobilePhone" [(ngModel)]="studentDetails.CaregiverOneMobilePhone" >
-      <mat-label>Caregiver One Mobile Phone</mat-label>
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-      <input matInput name="CaregiverOneOccupation" formControlName="CaregiverOneOccupation" [(ngModel)]="studentDetails.CaregiverOneOccupation" >
-      <mat-label>Caregiver One Occupation</mat-label>
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-      <input matInput name="CaregiverOneWorkPhone" formControlName="CaregiverOneWorkPhone" [(ngModel)]="studentDetails.CaregiverOneWorkPhone" >
-      <mat-label>Caregiver One Work Phone</mat-label>
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-      <input matInput name="CaregiverOneEmail" formControlName="CaregiverOneEmail" [(ngModel)]="studentDetails.CaregiverOneEmail" >
-      <mat-label>Caregiver One Email</mat-label>
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-      <input matInput name="CaregiverTwoRelationship" formControlName="CaregiverTwoRelationship" [(ngModel)]="studentDetails.CaregiverTwoRelationship" >
-      <mat-label>Caregiver Two Relationship</mat-label>
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-      <input matInput name="CaregiverTwoName" formControlName="CaregiverTwoName" [(ngModel)]="studentDetails.CaregiverTwoName" >
-      <mat-label>Caregiver Two Name</mat-label>
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-      <input matInput name="CaregiverTwoAddress" formControlName="CaregiverTwoAddress" [(ngModel)]="studentDetails.CaregiverTwoAddress" >
-      <mat-label>Caregiver Two Address</mat-label>
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-      <input matInput name="CaregiverTwoHomePhone" formControlName="CaregiverTwoHomePhone" [(ngModel)]="studentDetails.CaregiverTwoHomePhone" >
-      <mat-label>Caregiver Two Home Phone</mat-label>
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-      <input matInput name="CaregiverTwoMobilePhone" formControlName="CaregiverTwoMobilePhone" [(ngModel)]="studentDetails.CaregiverTwoMobilePhone" >
-      <mat-label>Caregiver Two Mobile Phone</mat-label>
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-      <input matInput name="CaregiverTwoOccupation" formControlName="CaregiverTwoOccupation" [(ngModel)]="studentDetails.CaregiverTwoOccupation" >
-      <mat-label>Caregiver Two Occupation</mat-label>
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-      <input matInput name="CaregiverTwoWorkPhone" formControlName="CaregiverTwoWorkPhone" [(ngModel)]="studentDetails.CaregiverTwoWorkPhone" >
-      <mat-label>Caregiver Two Work Phone</mat-label>
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-      <input matInput name="CaregiverTwoEmail" formControlName="CaregiverTwoEmail" [(ngModel)]="studentDetails.CaregiverTwoEmail" >
-      <mat-label>Caregiver Two Email</mat-label>
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-      <input matInput name="EmergencyContactRelationship" formControlName="EmergencyContactRelationship" [(ngModel)]="studentDetails.EmergencyContactRelationship" >
-      <mat-label>Emergency Contact Relationship</mat-label>
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-      <input matInput name="EmergencyContactName" formControlName="EmergencyContactName" [(ngModel)]="studentDetails.EmergencyContactName" >
-      <mat-label>Emergency Contact Name</mat-label>
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-      <input matInput name="EmergencyContactAddress" formControlName="EmergencyContactAddress" [(ngModel)]="studentDetails.EmergencyContactAddress" >
-      <mat-label>Emergency Contact Address</mat-label>
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-      <input matInput name="EmergencyContactHomePhone" formControlName="EmergencyContactHomePhone" [(ngModel)]="studentDetails.EmergencyContactHomePhone" >
-      <mat-label>Emergency Contact Home Phone</mat-label>
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-      <input matInput name="EmergencyContactMobilePhone" formControlName="EmergencyContactMobilePhone" [(ngModel)]="studentDetails.EmergencyContactMobilePhone" >
-      <mat-label>Emergency Contact Mobile Phone</mat-label>
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-      <input matInput name="EmergencyContactOccupation" formControlName="EmergencyContactOccupation" [(ngModel)]="studentDetails.EmergencyContactOccupation" >
-      <mat-label>Emergency Contact Occupation</mat-label>
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-      <input matInput name="EmergencyContactWorkPhone" formControlName="EmergencyContactWorkPhone" [(ngModel)]="studentDetails.EmergencyContactWorkPhone" >
-      <mat-label>Emergency Contact Work Phone</mat-label>
-    </mat-form-field>
-  </fieldset>
-  <button mat-button mat-raised-button color="primary" class="button button-primary" [disabled]="!StudentDetails.valid" (click)="updateDetails()">Update Details</button>
-  <button mat-button mat-raised-button color="accent" [disabled]="!StudentDetails.valid" (click)="cancelUpdate()">Cancel</button>
+      <mat-form-field appearance="outline">
+        <input matInput name="ForeNames" formControlName="ForeNames" [(ngModel)]="studentDetails.ForeNames" >
+        <mat-label>Fore Names</mat-label>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <input matInput name="LastName" formControlName="LastName" [(ngModel)]="studentDetails.LastName" >
+        <mat-label>Last Name</mat-label>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <input matInput name="DateOfBirth" formControlName="DateOfBirth" [(ngModel)]="studentDetails.DateOfBirth" >
+        <mat-label>Date Of Birth</mat-label>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <input matInput name="NSN" formControlName="NSN" [(ngModel)]="studentDetails.NSN" >
+        <mat-label>National Student Number</mat-label>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <input matInput name="HomePhone" formControlName="HomePhone" [(ngModel)]="studentDetails.HomePhone" >
+        <mat-label>Home Phone</mat-label>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <input matInput name="PhysicalUnitNo" formControlName="PhysicalUnitNo" [(ngModel)]="studentDetails.PhysicalUnitNo" >
+        <mat-label>Physical Unit Number</mat-label>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <input matInput name="PhysicalNumber" formControlName="PhysicalNumber" [(ngModel)]="studentDetails.PhysicalNumber" >
+        <mat-label>Physical Street Number</mat-label>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <input matInput name="PhysicalStreet" formControlName="PhysicalStreet" [(ngModel)]="studentDetails.PhysicalStreet" >
+        <mat-label>Physical Street Name</mat-label>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <input matInput name="PhysicalRuralDelivery" formControlName="PhysicalRuralDelivery" [(ngModel)]="studentDetails.PhysicalRuralDelivery" >
+        <mat-label>Physical Rural Delivery</mat-label>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <input matInput name="PhysicalSuburb" formControlName="PhysicalSuburb" [(ngModel)]="studentDetails.PhysicalSuburb" >
+        <mat-label>Physical Suburb</mat-label>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <input matInput name="PhysicalPostcode" formControlName="PhysicalPostcode" [(ngModel)]="studentDetails.PhysicalPostcode" >
+        <mat-label>Physical Postcode</mat-label>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <input matInput name="PostalUnitNo" formControlName="PostalUnitNo" [(ngModel)]="studentDetails.PostalUnitNo" >
+        <mat-label>Postal Unit Number</mat-label>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <input matInput name="PostalNumber" formControlName="PostalNumber" [(ngModel)]="studentDetails.PostalNumber" >
+        <mat-label>Postal Street Number</mat-label>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <input matInput name="PostalStreet" formControlName="PostalStreet" [(ngModel)]="studentDetails.PostalStreet" >
+        <mat-label>Postal Street Name</mat-label>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <input matInput name="PostalRuralDelivery" formControlName="PostalRuralDelivery" [(ngModel)]="studentDetails.PostalRuralDelivery" >
+        <mat-label> Postal Rural Delivery</mat-label>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <input matInput name="PostalSuburb" formControlName="PostalSuburb" [(ngModel)]="studentDetails.PostalSuburb" >
+        <mat-label>Postal Suburb</mat-label>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <input matInput name="PostalPostcode" formControlName="PostalPostcode" [(ngModel)]="studentDetails.PostalPostcode" >
+        <mat-label>Postal Postcode</mat-label>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <input matInput name="CaregiverOneRelationship" formControlName="CaregiverOneRelationship" [(ngModel)]="studentDetails.CaregiverOneRelationship" >
+        <mat-label>Caregiver One Relationship</mat-label>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <input matInput name="CaregiverOneName" formControlName="CaregiverOneName" [(ngModel)]="studentDetails.CaregiverOneName" >
+        <mat-label>Caregiver One Name</mat-label>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <input matInput name="CaregiverOneAddress" formControlName="CaregiverOneAddress" [(ngModel)]="studentDetails.CaregiverOneAddress" >
+        <mat-label>Caregiver One Address</mat-label>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <input matInput name="CaregiverOneHomePhone" formControlName="CaregiverOneHomePhone" [(ngModel)]="studentDetails.CaregiverOneHomePhone" >
+        <mat-label>Caregiver One Home Phone</mat-label>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <input matInput name="CaregiverOneMobilePhone" formControlName="CaregiverOneMobilePhone" [(ngModel)]="studentDetails.CaregiverOneMobilePhone" >
+        <mat-label>Caregiver One Mobile Phone</mat-label>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <input matInput name="CaregiverOneOccupation" formControlName="CaregiverOneOccupation" [(ngModel)]="studentDetails.CaregiverOneOccupation" >
+        <mat-label>Caregiver One Occupation</mat-label>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <input matInput name="CaregiverOneWorkPhone" formControlName="CaregiverOneWorkPhone" [(ngModel)]="studentDetails.CaregiverOneWorkPhone" >
+        <mat-label>Caregiver One Work Phone</mat-label>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <input matInput name="CaregiverOneEmail" formControlName="CaregiverOneEmail" [(ngModel)]="studentDetails.CaregiverOneEmail" >
+        <mat-label>Caregiver One Email</mat-label>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <input matInput name="CaregiverTwoRelationship" formControlName="CaregiverTwoRelationship" [(ngModel)]="studentDetails.CaregiverTwoRelationship" >
+        <mat-label>Caregiver Two Relationship</mat-label>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <input matInput name="CaregiverTwoName" formControlName="CaregiverTwoName" [(ngModel)]="studentDetails.CaregiverTwoName" >
+        <mat-label>Caregiver Two Name</mat-label>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <input matInput name="CaregiverTwoAddress" formControlName="CaregiverTwoAddress" [(ngModel)]="studentDetails.CaregiverTwoAddress" >
+        <mat-label>Caregiver Two Address</mat-label>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <input matInput name="CaregiverTwoHomePhone" formControlName="CaregiverTwoHomePhone" [(ngModel)]="studentDetails.CaregiverTwoHomePhone" >
+        <mat-label>Caregiver Two Home Phone</mat-label>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <input matInput name="CaregiverTwoMobilePhone" formControlName="CaregiverTwoMobilePhone" [(ngModel)]="studentDetails.CaregiverTwoMobilePhone" >
+        <mat-label>Caregiver Two Mobile Phone</mat-label>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <input matInput name="CaregiverTwoOccupation" formControlName="CaregiverTwoOccupation" [(ngModel)]="studentDetails.CaregiverTwoOccupation" >
+        <mat-label>Caregiver Two Occupation</mat-label>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <input matInput name="CaregiverTwoWorkPhone" formControlName="CaregiverTwoWorkPhone" [(ngModel)]="studentDetails.CaregiverTwoWorkPhone" >
+        <mat-label>Caregiver Two Work Phone</mat-label>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <input matInput name="CaregiverTwoEmail" formControlName="CaregiverTwoEmail" [(ngModel)]="studentDetails.CaregiverTwoEmail" >
+        <mat-label>Caregiver Two Email</mat-label>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <input matInput name="EmergencyContactRelationship" formControlName="EmergencyContactRelationship" [(ngModel)]="studentDetails.EmergencyContactRelationship" >
+        <mat-label>Emergency Contact Relationship</mat-label>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <input matInput name="EmergencyContactName" formControlName="EmergencyContactName" [(ngModel)]="studentDetails.EmergencyContactName" >
+        <mat-label>Emergency Contact Name</mat-label>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <input matInput name="EmergencyContactAddress" formControlName="EmergencyContactAddress" [(ngModel)]="studentDetails.EmergencyContactAddress" >
+        <mat-label>Emergency Contact Address</mat-label>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <input matInput name="EmergencyContactHomePhone" formControlName="EmergencyContactHomePhone" [(ngModel)]="studentDetails.EmergencyContactHomePhone" >
+        <mat-label>Emergency Contact Home Phone</mat-label>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <input matInput name="EmergencyContactMobilePhone" formControlName="EmergencyContactMobilePhone" [(ngModel)]="studentDetails.EmergencyContactMobilePhone" >
+        <mat-label>Emergency Contact Mobile Phone</mat-label>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <input matInput name="EmergencyContactOccupation" formControlName="EmergencyContactOccupation" [(ngModel)]="studentDetails.EmergencyContactOccupation" >
+        <mat-label>Emergency Contact Occupation</mat-label>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <input matInput name="EmergencyContactWorkPhone" formControlName="EmergencyContactWorkPhone" [(ngModel)]="studentDetails.EmergencyContactWorkPhone" >
+        <mat-label>Emergency Contact Work Phone</mat-label>
+      </mat-form-field>
+    </fieldset>
+    <button mat-button mat-raised-button color="primary" class="button button-primary" [disabled]="!StudentDetails.valid" (click)="updateDetails()">Update Details</button>
+    <button mat-button mat-raised-button color="accent" [disabled]="!StudentDetails.valid" (click)="cancelUpdate()">Cancel</button>
 
-</form>
-<a routerLink="/dashboard">Dashboard</a>
+  </form>
+  <a routerLink="/dashboard">Dashboard</a>
+</div>
