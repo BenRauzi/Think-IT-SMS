@@ -40,6 +40,7 @@ export class LoginComponent implements OnInit {
         if(data.msg === 'Token Expired'){
           console.log('Stay on login page, need to login again'); // debug
           localStorage.removeItem('pt-usertoken');
+          localStorage.removeItem('pt-username');
           this.snackBar.open('Your previous session has expired, please log in again!', 'Ok', {
             duration: 5000,
           });
@@ -58,6 +59,9 @@ export class LoginComponent implements OnInit {
     this.auth.login("TestAdmin", "passingword").subscribe((data: TokenDto) => {
       localStorage.setItem('pt-usertoken', data.token);
       this.auth.user.role = data.user.role;
+      this.auth.user.username = "Admin Account";
+      localStorage.setItem('pt-username', "Admin Account");
+
       this.router.navigate(['/dashboard']);
     });
   }
@@ -66,6 +70,8 @@ export class LoginComponent implements OnInit {
     this.auth.login("TestTeach", "passingword").subscribe((data: TokenDto) => {
       localStorage.setItem('pt-usertoken', data.token);
       this.auth.user.role = data.user.role;
+      this.auth.user.username = "Teacher Account";
+      localStorage.setItem('pt-username', "Teacher Account");
       this.router.navigate(['/dashboard']);
     });
   }
@@ -74,6 +80,8 @@ export class LoginComponent implements OnInit {
     this.auth.login("TestStu", "passingword").subscribe((data: TokenDto) => {
       localStorage.setItem('pt-usertoken', data.token);
       this.auth.user.role = data.user.role;
+      this.auth.user.username = "Student Account";
+      localStorage.setItem('pt-username', "Student Account");
       this.router.navigate(['/dashboard']);
     });
   }
@@ -84,7 +92,9 @@ export class LoginComponent implements OnInit {
       console.log(data);
       if (data.token) {
           localStorage.setItem('pt-usertoken', data.token);
+          localStorage.setItem('pt-username', data.user.username);
           this.auth.user.role = data.user.role;
+          this.auth.user.username = data.user.username;
           this.router.navigate(['/dashboard']);
       } else {
           this.snackBar.open('Username/Password was incorrect', 'Ok', {

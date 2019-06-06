@@ -1,34 +1,40 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
 <body>
-    
+  <header>
+    <span class="left"><b>Think</b> IT</span>
+    <span class="right">
+      <div>
+        <div class="role"><a href="http://cornerstone.ac.nz/"><b id="name">{{this.auth.user.username}}</b> <br> {{this.auth.user.role}}</a></div>
+        <div class="avatarContainer"><img id="avatarImage" src="assets/avatar_1.png" type="Avatar"><input id="avatarInput" (change)="this.changeAvatar()" type="file" accept="image/jpeg, image/png"></div>
+      </div>
+    </span>
+  </header>
   <div class="navbar">
-    <div class="avatarContainer"><img id="avatarImage" src="assets/avatar_1.png" type="Avatar"><input id="avatarInput" (change)="this.changeAvatar()" type="file" accept="image/jpeg, image/png"></div>
     <ul>
-    <b>{{this.auth.user.role}}</b>
+    <a routerLink="/dasboard" (mouseover)="openNav('none')"><li><i class="fas fa-home"></i> Dashboard</li></a>
+    <a routerLink="/notices" (mouseover)="openNav('none')"><li><i class="fas fa-address-book"></i> Notices</li></a>
 
-    <!-- <input id="testInput" type='file' accept='text/plain' (change)='this.openFile($event)'>
-    <img id="testing" src="" height="200" alt="immage preview..."> -->
-    <hr><p>Student</p><hr>
+    <div class="navHeader"><p><span><b>STUDENT</b></span></p></div>
     <a routerLink="/notices" (mouseover)="openNav('none')"><li><i class="fas fa-address-book"></i> Notices</li></a>
     <a (mouseover)="openNav('results')"><li><i class="far fa-list-alt"></i> Results</li></a> 
     <a (mouseover)="openNav('ncea_summary')"><li><i class="fas fa-poll-h"></i> NCEA Summary</li></a>
     <a routerLink="/studentdetails" (mouseover)="openNav('none')"><li><i class="fas fa-address-card"></i> Personal Details</li></a>
 
     <div *ngIf="this.auth.user.role === 'Teacher' || this.auth.user.role === 'Administrator'">
-    <hr><p>Teacher</p><hr>
+    <div class="navHeader"><p><span><b>TEACHER</b></span></p></div>
     <a (mouseover)="openNav('teacher_notices')"><li><i class="fas fa-address-book"></i> Notices</li></a>
     <a routerLink="/search" (mouseover)="openNav('none')"><li><i class="fas fa-male"></i> Search</li></a>
     </div>
 
     <div *ngIf="this.auth.user.role === 'Administrator'">
-    <hr><p>Admin</p><hr>
+    <div class="navHeader"><p><span><b>MANAGE</b></span></p></div>
     <a routerLink="/register" (mouseover)="openNav('none')"><li><i class="fas fa-users"></i> Register</li></a>
     <a routerLink="/adminonly" (mouseover)="openNav('none')"><li><i class="fas fa-users-cog"></i> Administration</li></a>
     <a routerLink="/editstudentdetails" (mouseover)="openNav('none')"><li><i class="fas fa-address-card"></i> Edit Details</li></a>  
     </div>
     
-    <hr><p>Actions</p><hr>
+    <div class="navHeader"><p><span><b>ACTIONS</b></span></p></div>
     <a href="javascript:void(0)" (click)="logout()"><li><i class="fas fa-sign-out-alt"></i> Logout</li></a>
     </ul>
   </div>

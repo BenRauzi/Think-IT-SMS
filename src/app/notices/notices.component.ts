@@ -22,7 +22,7 @@ export class NoticesComponent implements OnInit {
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
     this.notices.read().subscribe((data: Notice[]) => { //? api call to get notices
-      this.dataSource.data = data;
+      this.dataSource.data = data.reverse();
     }); 
   }
 

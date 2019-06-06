@@ -20,7 +20,8 @@ export class AuthService{
     }
 
     user: UserDto = {
-        role: null
+        role: null,
+        username: null
     };
 
     public login(username: string, password: string){
