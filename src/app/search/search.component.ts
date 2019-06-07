@@ -1,10 +1,13 @@
-import {Component, OnInit, ChangeDetectorRef, ViewChild} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {Component, OnInit, ChangeDetectorRef, ViewChild, NgModule} from '@angular/core';
+import {FormControl, FormsModule,ReactiveFormsModule, FormGroup, FormBuilder, Validators} from '@angular/forms';
 import {Observable} from 'rxjs';
+import {CommonModule} from '@angular/common';
 import {map, startWith} from 'rxjs/operators';
-import {MatSnackBar} from '@angular/material/snack-bar';
-import { AuthService } from '../../services';
+import { Notice } from 'src/models';
+import { MatTableDataSource, MatPaginator } from '@angular/material';
+import { NoticesService } from 'src/services';
 
+let NOTICE_DATA: Notice[];
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
@@ -12,9 +15,24 @@ import { AuthService } from '../../services';
 })
 
 export class SearchComponent implements OnInit {
+  dataSource = new MatTableDataSource<Notice>([]);
+  displayedColumns: string[] = ['title', 'information', 'teacher'];
+
+  visible = true;
+
+  @ViewChild(MatPaginator, {}) paginator: MatPaginator;
+
+  myGroup: FormGroup;
+  
+  constructor(private notices: NoticesService, private fb: FormBuilder) { 
+    this.myGroup = this.fb.group({keywords: ['', Validators.required]})
+  }
 
   ngOnInit() {
-    
+     this.dataSource.paginator = this.paginator;
+    this.notices.read().subscribe((data: Notice[]) => { //? api call to get notices
+      this.dataSource.data = data.reverse();
+    }); 
   }
   
   closeNav() {
@@ -26,29 +44,4 @@ export class SearchComponent implements OnInit {
       } catch(err) {}
     }
   }
-  openSnackBar(message: string, action: string) {
-    //
-  }
-  yearDialog():void{
-
-  }
 }
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  curclass: string;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, curclass: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, curclass: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, curclass: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, curclass: 'Be'},
-  {position: 5, name: 'Boron', weight: 10.811, curclass: 'B'},
-  {position: 6, name: 'Carbon', weight: 12.0107, curclass: 'C'},
-  {position: 7, name: 'Nitrogen', weight: 14.0067, curclass: 'N'},
-  {position: 8, name: 'Oxygen', weight: 15.9994, curclass: 'O'},
-  {position: 9, name: 'Fluorine', weight: 18.9984, curclass: 'F'},
-  {position: 10, name: 'Neon', weight: 20.1797, curclass: 'Ne'},
-];

@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule, MatInputModule, MatFormFieldModule, MatCardModule, MatSelectModule, MatOptionModule, MatSnackBarModule, MatTableModule, MatProgressSpinnerModule, MatPaginatorModule, MAT_DIALOG_DEFAULT_OPTIONS, MatDialogRef, MatDialog, MatDialogModule, MatSliderModule, MatAutocompleteModule, MatRadioModule, MatMenuModule } from '@angular/material';
+import { MatButtonModule, MatInputModule, MatFormFieldModule, MatCardModule, MatSelectModule, MatOptionModule, MatSnackBarModule, MatTableModule, MatProgressSpinnerModule, MatPaginatorModule, MAT_DIALOG_DEFAULT_OPTIONS, MatDialogRef, MatDialogModule, MatSliderModule, MatAutocompleteModule, MatRadioModule, MatMenuModule, MatButtonToggleModule } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AuthGuard, RoleGuard } from '../guards';
@@ -17,7 +17,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { RegisterComponent } from './register/register.component';
 import { AdminOnlyTestComponent } from './admin-only-test/admin-only-test.component';
 import { NoticesComponent } from './notices/notices.component';
-import { AddNoticeComponent } from './add-notice/add-notice.component';
+import { AddNoticeComponent, AddNoticeConfirmBoxDialog } from './add-notice/add-notice.component';
 import { StudentDetailsComponent } from './student-details/student-details.component';
 import { StudentDetailsEditTestComponent } from './student-details-edit-test/student-details-edit-test.component';
 import { NavigationComponent, ConfirmBoxDialog } from './navigation/navigation.component';
@@ -37,7 +37,8 @@ import {FormControl} from '@angular/forms';
     StudentDetailsEditTestComponent,
     NavigationComponent,
     ConfirmBoxDialog,
-    SearchComponent
+    SearchComponent,
+    AddNoticeConfirmBoxDialog
   ],
   imports: [
     BrowserModule,
@@ -60,7 +61,8 @@ import {FormControl} from '@angular/forms';
     MatSliderModule,
     MatAutocompleteModule,
     MatRadioModule,
-    MatMenuModule
+    MatMenuModule,
+    MatButtonToggleModule
   ],
   providers: [
     {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}},
@@ -79,7 +81,7 @@ import {FormControl} from '@angular/forms';
     }
 
   ],
-  entryComponents: [ConfirmBoxDialog],
+  entryComponents: [ConfirmBoxDialog, AddNoticeConfirmBoxDialog],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

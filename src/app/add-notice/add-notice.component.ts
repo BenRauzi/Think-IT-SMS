@@ -1,10 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { invoke } from 'q';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { NoticesService } from 'src/services';
-import { MatSnackBar } from '@angular/material';
-import { BaseModel } from 'src/models';
+import { MatSnackBar, MAT_DIALOG_DATA, MatDialogRef, MatDialog, MatTableDataSource } from '@angular/material';
+import { BaseModel, Notice } from 'src/models';
 import { Router } from '@angular/router';
+import { DialogData } from '../navigation/navigation.component';
+
+export interface AddNoticeDialogData {
+  notice: Notice;
+}
 
 @Component({
   selector: 'app-add-notice',
@@ -14,7 +19,8 @@ import { Router } from '@angular/router';
 export class AddNoticeComponent implements OnInit {
   form: FormGroup;
   
-  constructor(private fb: FormBuilder, private notices: NoticesService, private snackBar: MatSnackBar, private router: Router) {
+// tslint:disable-next-line: max-line-length
+  constructor(public dialog: MatDialog, private fb: FormBuilder, private notices: NoticesService, private snackBar: MatSnackBar, private router: Router) {
     this.form = this.fb.group({
       title: ['',[Validators.required, Validators.maxLength(50)]],
       information: ['',[Validators.required, Validators.maxLength(500)]]
@@ -24,27 +30,24 @@ export class AddNoticeComponent implements OnInit {
   ngOnInit() {
     setTimeout(() => 
     {
-      this.snackBar.open("Image will be replaced momentarily", 'Ok', {
+      this.snackBar.open('Image will be replaced momentarily', 'Ok', {
         duration: 5000,
       })
     },
     500);
   }
 
-  addNotice() {
-    const val = this.form.value;
-    if(val.title.length <= 50 && val.information.length <= 500){
-      this.notices.write(val.title, val.information).subscribe((data: BaseModel) => {
-        if (data['status'] === 401) {
-          this.router.navigate(['/login']);
-        } else {
-          this.snackBar.open('Notice created Successfully', 'Ok', {
-            duration: 5000,
-          });
-          this.form.reset()
-        }
-      });
-    }
+  addNotice(val: {title: string, information: string}) {
+    this.notices.write(val.title, val.information).subscribe((data: BaseModel) => {
+      if (data['status'] === 401) {
+        this.router.navigate(['/login']);
+      } else {
+        this.snackBar.open('Notice created Successfully', 'Ok', {
+          duration: 5000,
+        });
+        this.form.reset();
+      }
+    });
   }
 
   getErrorMessage(control) {
@@ -66,6 +69,64 @@ export class AddNoticeComponent implements OnInit {
         document.getElementById("ribbon").style.marginLeft = "0%";
       } catch(err) {}
     }
+  }
+
+  openDialog(): void {
+    const val = this.form.value;
+    if(val.title.length <= 50 && val.information.length <= 500){
+      // tslint:disable-next-line: no-use-before-declare
+      const dialogRef = this.dialog.open(AddNoticeConfirmBoxDialog, {
+        width: '600px',
+        height: '400px',
+        data: {notice: ['xxxxxxx', this.form.value.title, this.form.value.information, 'Teacher Name']}
+      });
+
+      dialogRef.afterClosed().subscribe(result => {
+        console.log('The dialog was closed');
+        if (result === true) {
+          this.addNotice(val);
+        }
+      });
+    } else {
+      if(val.title.length > 50 && val.information.length > 500){
+        this.snackBar.open('Title and Description are too long!', 'Ok', {
+          duration: 5000
+        });
+      } else if(val.title.length > 50){
+        this.snackBar.open('Title is too long!', 'Ok', {
+          duration: 5000
+        });
+      } else {
+        this.snackBar.open('Description is too long!', 'Ok', {
+          duration: 5000
+        });
+      }
+    }
+  }
+
+}
+
+@Component({
+  selector: 'add-notice-confirm',
+  templateUrl: 'add-notice-confirm.html',
+  styleUrls: ['./addNoticeConfirm.scss']
+})
+// tslint:disable-next-line: component-class-suffix
+export class AddNoticeConfirmBoxDialog {
+
+  dataSource = new MatTableDataSource<Notice>([]);
+  displayedColumns: string[] = ['title', 'information', 'teacher'];
+
+  constructor(
+    public dialogRef: MatDialogRef<AddNoticeConfirmBoxDialog>,
+    @Inject(MAT_DIALOG_DATA) public data: AddNoticeDialogData) {}
+
+  ngOnInit(): void {
+    console.log(this.data.notice);
+    this.dataSource.data = [this.data.notice];
+  }
+  onNoClick(): void {
+    this.dialogRef.close();
   }
 
 }
