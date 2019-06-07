@@ -3,6 +3,7 @@ import {FormControl} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import { AuthService } from '../../services';
 
 @Component({
   selector: 'app-search',
@@ -13,6 +14,7 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 export class SearchComponent implements OnInit {
 
   ngOnInit() {
+    
   }
   
   closeNav() {

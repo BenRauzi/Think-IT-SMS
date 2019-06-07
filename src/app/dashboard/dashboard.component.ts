@@ -2,11 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService, ApiService } from '../../services';
 import { UserModel } from 'src/models';
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
+
+
 export class DashboardComponent implements OnInit {
 
   constructor(private router: Router, public auth: AuthService, private api: ApiService) { }
@@ -14,6 +17,7 @@ export class DashboardComponent implements OnInit {
   role: string;
   username: string;
 
+  
   isTeacher = false;
   isAdmin = false;
   ngOnInit() {
@@ -62,6 +66,4 @@ export class DashboardComponent implements OnInit {
       } catch(err) {}
     }
   }
-
-
-}
+};
