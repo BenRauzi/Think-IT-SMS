@@ -2,14 +2,16 @@
 <app-navigation></app-navigation>
 <div id="main">
   <h1>Student Search</h1>
+  <form [formGroup] = "myGroup">
     <mat-form-field color="accent" appearance="outline" class="keywordssearchbox">
         <input matInput name="keywords" formControlName="keywords">
         <mat-label>Keywords</mat-label>
     </mat-form-field>
-    <!--This here is where you would add the search function call-->
     <a href="" style="color: black; ">
     <i class="fas fa-search" style="font-size: 27px; padding-left: 20px;"></i>
     </a>
+  </form>
+    <!--This here is where you would add the search function call-->
     <br/>
       <div class="searchoptions">
         <button mat-button mat-raised-button color="primary" class="button button-primary" (click)="openSnackBar(age, close)">Year<br/><i class="fas fa-users"></i></button>
@@ -29,9 +31,22 @@
       </div>
 
       <!--This is the Table-->
-      <table>
-
-        </table>
-        
+      <table mat-table [dataSource]="this.dataSource" class="">
+        <ng-container matColumnDef="title">
+          <th mat-header-cell *matHeaderCellDef>Title</th>
+          <td mat-cell *matCellDef="let notice"> {{notice.title}} </td>
+        </ng-container>
+        <ng-container matColumnDef="information">
+          <th mat-header-cell *matHeaderCellDef>Information</th>
+          <td mat-cell *matCellDef="let notice"> {{notice.information}} </td>
+        </ng-container>
+        <ng-container matColumnDef="teacher">
+          <th mat-header-cell *matHeaderCellDef>Teacher</th>
+          <td mat-cell *matCellDef="let notice"> {{notice.teacher}} </td>
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+      </table>
+      <mat-paginator [pageSizeOptions]="[10, 20]" showFirstLastButtons></mat-paginator>
 </div>
 
