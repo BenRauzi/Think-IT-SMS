@@ -7,7 +7,7 @@
         <input matInput name="keywords" formControlName="keywords">
         <mat-label>Keywords</mat-label>
     </mat-form-field>
-    <a href="" style="color: black; ">
+    <a style="color: black; ">
     <i class="fas fa-search" style="font-size: 27px; padding-left: 20px;"></i>
     </a>
   </form>
@@ -31,18 +31,14 @@
       </div>
 
       <!--This is the Table-->
-      <table mat-table [dataSource]="this.dataSource" class="">
-        <ng-container matColumnDef="title">
-          <th mat-header-cell *matHeaderCellDef>Title</th>
-          <td mat-cell *matCellDef="let notice"> {{notice.title}} </td>
+      <table mat-table [dataSource]="this.dataSource" class="mat-elevation-z8">
+        <ng-container matColumnDef="Name">
+          <th mat-header-cell *matHeaderCellDef >Name</th>
+          <td mat-cell *matCellDef="let student"> {{student.Name}} </td>
         </ng-container>
-        <ng-container matColumnDef="information">
-          <th mat-header-cell *matHeaderCellDef>Information</th>
-          <td mat-cell *matCellDef="let notice"> {{notice.information}} </td>
-        </ng-container>
-        <ng-container matColumnDef="teacher">
-          <th mat-header-cell *matHeaderCellDef>Teacher</th>
-          <td mat-cell *matCellDef="let notice"> {{notice.teacher}} </td>
+        <ng-container matColumnDef="UserID">
+          <th mat-header-cell *matHeaderCellDef>UserID</th>
+          <td mat-cell *matCellDef="let student"> {{student.UserID}} </td>
         </ng-container>
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
           <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
