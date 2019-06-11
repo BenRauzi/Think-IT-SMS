@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule, MatInputModule, MatFormFieldModule, MatCardModule, MatSelectModule, MatOptionModule, MatSnackBarModule, MatTableModule, MatProgressSpinnerModule, MatPaginatorModule, MAT_DIALOG_DEFAULT_OPTIONS, MatDialogRef, MatDialogModule, MatSliderModule, MatAutocompleteModule, MatRadioModule, MatMenuModule, MatButtonToggleModule, MatSortModule, MatChipsModule, MatIconModule } from '@angular/material';
+import { MatButtonModule, MatInputModule, MatFormFieldModule, MatCardModule, MatSelectModule, MatOptionModule, MatSnackBarModule, MatTableModule, MatProgressSpinnerModule, MatPaginatorModule, MAT_DIALOG_DEFAULT_OPTIONS, MatDialogRef, MatDialogModule, MatSliderModule, MatAutocompleteModule, MatRadioModule, MatMenuModule, MatButtonToggleModule, MatSortModule, MatChipsModule, MatIconModule, MatSlideToggleModule } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AuthGuard, RoleGuard } from '../guards';
@@ -68,7 +68,8 @@ import {FormControl} from '@angular/forms';
     MatButtonToggleModule,
     MatSortModule,
     MatChipsModule,
-    MatIconModule
+    MatIconModule,
+    MatSlideToggleModule
   ],
   providers: [
     {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}},

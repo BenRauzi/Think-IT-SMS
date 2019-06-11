@@ -21,17 +21,22 @@ export interface DialogData {
 
 export class SearchComponent implements OnInit {
 
-  myControl = new FormControl();
+  Keywords = new FormControl();
+
+  advancedSearch:boolean;
 
   options: string[] = ['One', 'Two', 'Three'];
   filteredOptions: Observable<string[]>;
 
   dataSource = new MatTableDataSource<Student>([]);
-  displayedColumns: string[] = ['Name', 'UserID'];
+  displayedColumns: string[] = ['Name', 'UserID', ];
 
   @ViewChild(MatPaginator, {}) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
+
   myGroup: FormGroup;
+
+  myControl = new FormControl();
 
   constructor(private students: DetailsService, private fb: FormBuilder, public dialog: MatDialog) { 
     this.myGroup = this.fb.group({keywords: ['', Validators.required]})
@@ -50,9 +55,12 @@ export class SearchComponent implements OnInit {
     });
   }
 
+  if(advancedSearch){
+    document.getElementById("sideNav").style.display = 'none';
+  }
   ngOnInit() {
      this.dataSource.paginator = this.paginator;
-    this.students.getStudents().subscribe((data: Student[]) => { //? api call to get notices
+    this.students.getStudents().subscribe((data: Student[]) => { //? api call to get students
       console.log(data);
       this.dataSource.data = data.reverse();
     }); 
