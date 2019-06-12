@@ -2,10 +2,10 @@ import {Component, OnInit, ViewChild, Inject} from '@angular/core';
 import {FormGroup, FormControl, FormBuilder, Validators} from '@angular/forms';
 import { Student } from 'src/models';
 import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
-import { DetailsService } from 'src/services';
 import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
+import { DetailsService } from 'src/services';
 
 let STUDENT_DATA: Student[];
 
@@ -26,10 +26,12 @@ export class SearchComponent implements OnInit {
   advancedSearch:boolean;
 
   options: string[] = ['One', 'Two', 'Three'];
+  
   filteredOptions: Observable<string[]>;
 
   dataSource = new MatTableDataSource<Student>([]);
-  displayedColumns: string[] = ['Name', 'UserID', ];
+
+  displayedColumns: string[] = ['FirstName', 'LastName'];
 
   @ViewChild(MatPaginator, {}) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -55,15 +57,13 @@ export class SearchComponent implements OnInit {
     });
   }
 
-  if(advancedSearch){
-    document.getElementById("sideNav").style.display = 'none';
-  }
   ngOnInit() {
      this.dataSource.paginator = this.paginator;
-    this.students.getStudents().subscribe((data: Student[]) => { //? api call to get students
+    this.students.getStudentInfo().subscribe((data: Student[]) => { //? api call to get students
       console.log(data);
       this.dataSource.data = data.reverse();
     }); 
+
     this.filteredOptions = this.myControl.valueChanges
       .pipe(
         startWith(''),

@@ -23,7 +23,7 @@ export class DetailsService{
     }
 
     public getStudentInfo(){
-        
+        return this.http.get(`${API_URL}/api/student/studentInfo`);
     }
 
     getStudentDetails(userId){

@@ -32,13 +32,13 @@
     </div>
       <!--This is the Table-->
       <table mat-table [dataSource]="this.dataSource" class="mat-elevation-z8" matSort>
-        <ng-container matColumnDef="Name">
+        <ng-container matColumnDef="FirstName">
           <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
-          <td mat-cell *matCellDef="let student"> {{student.Name}} </td>
+          <td mat-cell *matCellDef="let student"> {{student.FirstName}} </td>
         </ng-container>
-        <ng-container matColumnDef="UserID">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>UserID</th>
-          <td mat-cell *matCellDef="let student"> {{student.UserID}} </td>
+        <ng-container matColumnDef="LastName">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>LastName(s)</th>
+          <td mat-cell *matCellDef="let student"> {{student.LastName}} </td>
         </ng-container>
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
           <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
