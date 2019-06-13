@@ -43,4 +43,6 @@ export class Student{
     EmergencyContactOccupation: string;
     EmergencyContactWorkPhone: string;
     UUID: string;
+    Name: string;
+    UserID: string;
 }
