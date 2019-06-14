@@ -31,7 +31,7 @@ export class SearchComponent implements OnInit {
 
   dataSource = new MatTableDataSource<Student>([]);
 
-  displayedColumns: string[] = ['FirstName', 'LastName'];
+  displayedColumns: string[] = ['FirstName', 'LastName', "Sex", "YearGroup", "Homeroom", "DateOfBirth", "LevelOneCredits", "LevelTwoCredits", "LevelThreeCredits"];
 
   @ViewChild(MatPaginator, {}) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;

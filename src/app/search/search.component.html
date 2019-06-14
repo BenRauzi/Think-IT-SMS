@@ -40,6 +40,34 @@
           <th mat-header-cell *matHeaderCellDef mat-sort-header>LastName(s)</th>
           <td mat-cell *matCellDef="let student"> {{student.LastName}} </td>
         </ng-container>
+        <ng-container matColumnDef="Sex">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Sex</th>
+          <td mat-cell *matCellDef="let student"> {{student.Sex}} </td>
+        </ng-container>
+        <ng-container matColumnDef="YearGroup">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Year Group</th>
+          <td mat-cell *matCellDef="let student"> {{student.YearGroup}} </td>
+        </ng-container>
+        <ng-container matColumnDef="Homeroom">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Homeroom</th>
+          <td mat-cell *matCellDef="let student"> {{student.Homeroom}} </td>
+        </ng-container>
+        <ng-container matColumnDef="DateOfBirth">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>DOB</th>
+          <td mat-cell *matCellDef="let student"> {{student.DateOfBirth}} </td>
+        </ng-container>
+        <ng-container matColumnDef="LevelOneCredits">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>L1 Credits</th>
+          <td mat-cell *matCellDef="let student"> {{student.LevelOneCredits}} </td>
+        </ng-container>
+        <ng-container matColumnDef="LevelTwoCredits">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>L2 Credits</th>
+          <td mat-cell *matCellDef="let student"> {{student.LevelTwoCredits}} </td>
+        </ng-container>
+        <ng-container matColumnDef="LevelThreeCredits">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>L3 Credits</th>
+          <td mat-cell *matCellDef="let student"> {{student.LevelThreeCredits}} </td>
+        </ng-container>
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
           <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
       </table>

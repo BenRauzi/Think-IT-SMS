@@ -6,6 +6,12 @@ export class Student{
     Sex: string;
     YearGroup: string;
     NSN: string;
+    LevelOneCredits: string;
+    LevelTwoCredits: string;
+    LevelThreeCredits: string;
+    Subjects: string;
+    TimeTableID: string;
+    HomeRoom: string;
     HomePhone: string;
     PhysicalUnitNo: string;
     PhysicalNumber: string;
@@ -45,4 +51,5 @@ export class Student{
     UUID: string;
     Name: string;
     UserID: string;
+
 }
