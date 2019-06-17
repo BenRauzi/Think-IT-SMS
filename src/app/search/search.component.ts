@@ -37,11 +37,13 @@ export class SearchComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
 
   myGroup: FormGroup;
+  classdialog: FormGroup;
 
   myControl = new FormControl();
 
   constructor(private students: DetailsService, private fb: FormBuilder, public dialog: MatDialog) { 
-    this.myGroup = this.fb.group({keywords: ['', Validators.required]})
+    this.myGroup = this.fb.group({keywords: ['', Validators.required]}),
+    this.classdialog = this.fb.group({myControl: ['', Validators.required]})
   }
 
   age: [];
