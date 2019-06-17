@@ -8,10 +8,10 @@
         <input matInput name="Keywords" type="search" (formControl)="Keywords" (keyup)="doFilter($event.target.value)">
         <mat-label>Keywords</mat-label>
     </mat-form-field>
-    <mat-slide-toggle (Change)="showDiv = !showDiv">Advanced Search</mat-slide-toggle>
+    <mat-slide-toggle (click)="showAdvancedSearch()">Advanced Search</mat-slide-toggle>
   </form>
     <!--This here is where you would add the search function call-->
-    <div ng-show="showDiv">
+    <div id="advancedSearch">
     <br/>
       <div class="searchoptions">
         <button mat-button mat-raised-button color="primary" class="button button-primary" (click)="openYearDialog()">Year<br/><i class="fas fa-users"></i></button>

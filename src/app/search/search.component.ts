@@ -60,6 +60,8 @@ export class SearchComponent implements OnInit {
   }
 
   ngOnInit() {
+    document.getElementById("advancedSearch").style.display = "none"
+
      this.dataSource.paginator = this.paginator;
     this.students.getStudentInfo().subscribe((data: Student[]) => { //? api call to get students
       console.log(data);
@@ -90,6 +92,13 @@ export class SearchComponent implements OnInit {
       try {
         document.getElementById("ribbon").style.marginLeft = "0%";
       } catch(err) {}
+    }
+  }
+  showAdvancedSearch() {
+    if ( document.getElementById("advancedSearch").style.display == "none") {
+      document.getElementById("advancedSearch").style.display = "block"
+    } else {
+      document.getElementById("advancedSearch").style.display = "none"
     }
   }
   
