@@ -10,7 +10,9 @@ import { DetailsService } from 'src/services';
 let STUDENT_DATA: Student[];
 
 export interface DialogData {
-
+  subject: [];
+  age: [];
+  class: [];
 }
 
 @Component({
@@ -20,12 +22,13 @@ export interface DialogData {
 })
 
 export class SearchComponent implements OnInit {
+  myControl = new FormControl();
+  options: string[] = ['One', 'Two', 'Three'];
 
   Keywords = new FormControl();
 
   advancedSearch:boolean;
 
-  options: string[] = ['One', 'Two', 'Three'];
   
   filteredOptions: Observable<string[]>;
 
@@ -39,23 +42,27 @@ export class SearchComponent implements OnInit {
   myGroup: FormGroup;
   classdialog: FormGroup;
 
-  myControl = new FormControl();
-
   constructor(private students: DetailsService, private fb: FormBuilder, public dialog: MatDialog) { 
-    this.myGroup = this.fb.group({keywords: ['', Validators.required]}),
-    this.classdialog = this.fb.group({myControl: ['', Validators.required]})
+    this.myGroup = this.fb.group({keywords: ['', Validators.required]});//,
+    //this.classdialog = this.fb.group({myControl: ['']})
   }
 
   age: [];
   openYearDialog() {
     this.dialog.open(yearDialog, {
-      data: {name: this.age}
+      data: {age: this.age}
     });
   }
   class: [];
   openClassDialog() {
     this.dialog.open(classDialog, {
-      data: {name: this.class}
+      data: {class: this.class}
+    });
+  }
+  subject: [];
+  openSubjectDialog() {
+    this.dialog.open(subjectDialog, {
+      data: {subject: this.subject}
     });
   }
 
@@ -106,8 +113,8 @@ export class SearchComponent implements OnInit {
 //This is all the dialogs====================================================================================
 //YEAR DIALOG================================================================================================
 @Component({
-  selector: 'Dialogs/year',
-  templateUrl: 'Dialogs/year.html',
+  selector: 'year',
+  templateUrl: 'year.html',
   styleUrls: ['search.component.scss']
 })
 export class yearDialog {
@@ -115,10 +122,19 @@ export class yearDialog {
 }
 //CLASS DIALOG===============================================================================================
 @Component({
-  selector: 'Dialogs/class',
-  templateUrl: 'Dialogs/class.html',
+  selector: 'class',
+  templateUrl: 'class.html',
   styleUrls: ['search.component.scss']
 })
 export class classDialog {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+}
+//SUBJECT DIALOG===============================================================================================
+@Component({
+  selector: 'subject',
+  templateUrl: 'subject.html',
+  styleUrls: ['search.component.scss']
+})
+export class subjectDialog {
   constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData) {}
 }

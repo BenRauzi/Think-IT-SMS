@@ -16,7 +16,7 @@
       <div class="searchoptions">
         <button mat-button mat-raised-button color="primary" class="button button-primary" (click)="openYearDialog()">Year<br/><i class="fas fa-users"></i></button>
         <button mat-button mat-raised-button color="primary" class="button button-primary" (click)="openClassDialog()">Class<br/><i class="fas fa-chalkboard-teacher"></i></button>
-        <button mat-button mat-raised-button color="primary" class="button button-primary" (click)="openDialog()">Subject<br/><i class="fas fa-book"></i></button>
+        <button mat-button mat-raised-button color="primary" class="button button-primary" (click)="openSubjectDialog()">Subject<br/><i class="fas fa-book"></i></button>
         <button mat-button mat-raised-button color="primary" class="ethnicity button button-primary" (click)="openDialog()">Ethnicity<br/><i class="fas fa-male"></i>&nbsp; <i class="fas fa-male"></i>&nbsp; <i class="fas fa-male" id="white"></i></button>
         <br/>
         <button mat-button mat-raised-button color="primary" class="button button-primary" (click)="openDialog()">House<br/><i class="fas fa-home"></i></button>
@@ -30,6 +30,7 @@
         </mat-button-toggle-group>
       </div>
     </div>
+    <p>Filtering by: <i>{{subject}}</i></p>
       <!--This is the Table-->
       <table mat-table [dataSource]="this.dataSource" matSort>
         <ng-container matColumnDef="FirstName">

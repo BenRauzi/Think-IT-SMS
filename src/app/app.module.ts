@@ -21,7 +21,7 @@ import { AddNoticeComponent, AddNoticeConfirmBoxDialog } from './add-notice/add-
 import { StudentDetailsComponent } from './student-details/student-details.component';
 import { StudentDetailsEditTestComponent } from './student-details-edit-test/student-details-edit-test.component';
 import { NavigationComponent, ConfirmBoxDialog } from './navigation/navigation.component';
-import { SearchComponent, yearDialog, classDialog } from './search/search.component';
+import { SearchComponent, yearDialog, classDialog, subjectDialog } from './search/search.component';
 import {FormControl} from '@angular/forms';
 
 @NgModule({
@@ -40,7 +40,8 @@ import {FormControl} from '@angular/forms';
     SearchComponent,
     AddNoticeConfirmBoxDialog,
     yearDialog, 
-    classDialog
+    classDialog,
+    subjectDialog
 
   ],
   imports: [
@@ -88,7 +89,7 @@ import {FormControl} from '@angular/forms';
     }
 
   ],
-  entryComponents: [ConfirmBoxDialog, AddNoticeConfirmBoxDialog, yearDialog, classDialog],
+  entryComponents: [ConfirmBoxDialog, AddNoticeConfirmBoxDialog, yearDialog, classDialog, subjectDialog],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
