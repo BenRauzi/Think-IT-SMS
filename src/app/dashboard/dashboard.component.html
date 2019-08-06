@@ -14,40 +14,102 @@
  </div>
 
 <div id="main" (mouseover)="closeNav()">
-        <!-- Main Parts of the Page go in here-->
-        This is the main dashboard page<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-        Text for scrolling
-
-        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-
-            <!--- Note that these columns can be defined in any order.
-                  The actual rendered columns are set as a property on the row definition" -->
-          
-            <!-- Position Column -->
-            <ng-container matColumnDef="position">
-              <th mat-header-cell *matHeaderCellDef> No. </th>
-              <td mat-cell *matCellDef="let element"> {{element.position}} </td>
-            </ng-container>
-          
-            <!-- Name Column -->
-            <ng-container matColumnDef="name">
-              <th mat-header-cell *matHeaderCellDef> Name </th>
-              <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-            </ng-container>
-          
-            <!-- Weight Column -->
-            <ng-container matColumnDef="weight">
-              <th mat-header-cell *matHeaderCellDef> Weight </th>
-              <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
-            </ng-container>
-          
-            <!-- Symbol Column -->
-            <ng-container matColumnDef="symbol">
-              <th mat-header-cell *matHeaderCellDef> Symbol </th>
-              <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
-            </ng-container>
-          
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-          </table>
+  <mat-card-title>Overview</mat-card-title>
+  <div class="overview-row">
+    <div class="overview-column">
+        <mat-card class="notices-card">
+            <mat-card-subtitle>Notices</mat-card-subtitle>
+            <table mat-table [dataSource]="this.dataSource" class="">
+                <ng-container matColumnDef="title">
+                  <th mat-header-cell *matHeaderCellDef>Title</th>
+                  <td mat-cell *matCellDef="let notice"> {{notice.title}} </td>
+                </ng-container>
+                <ng-container matColumnDef="information">
+                  <th mat-header-cell *matHeaderCellDef>Information</th>
+                  <td mat-cell *matCellDef="let notice"> {{notice.information}} </td>
+                </ng-container>
+                <ng-container matColumnDef="teacher">
+                  <th mat-header-cell *matHeaderCellDef>Teacher</th>
+                  <td mat-cell *matCellDef="let notice"> {{notice.teacher}} </td>
+                </ng-container>
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                  <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+              </table>
+              <mat-paginator [pageSizeOptions]="[5, 10, 15]" showFirstLastButtons></mat-paginator>
+          </mat-card>
+          <mat-card>
+              <mat-card-subtitle>Student Birthdays</mat-card-subtitle>
+              <p>Happy Birthday to Ben Rauzi from Year 12!</p>
+            </mat-card>
+            <mat-card>
+              <div mat-card-avatar class="example-header-image" matTooltip="Mr Teacher Man" matTooltipPosition="after"></div>
+              <mat-card-subtitle class="card-title">Tribe Performances</mat-card-subtitle>
+              <img mat-card-image src="http://www.cornerstone.ac.nz/wp/wp-content/gallery/2019-tribe-performances/IMG_4449.JPG" alt="Photo of a Shiba Inu">
+              <mat-card-content>
+                <p>
+                  Congratulations to the winners of the Tribe Performances 2019!<br />
+                  Placings:<br />
+                    Singing:
+                    <br />1st: Asher
+                    <br />2nd: Zebulun
+                    <br />3rd Equal: Issachar
+                    <br />3rd Equal: Naphtali
+                    <br /><br />
+                    Acting:
+                    <br />1st: Issachar
+                    <br />2nd: Asher
+                    <br />3rd: Zebulun
+                    <br />4th: Naphtali
+                </p>
+              </mat-card-content>
+              <mat-card-actions>
+                <button mat-button mat-raised-button color="accent" class="button button-accent" class="like-button" (click)="addLikeOne()"><i class="fas fa-thumbs-up"></i></button>
+                <p class="like-counter">{{ likeCountOne }}</p>
+              </mat-card-actions>
+              <p class="date">26th July 2016</p>
+            </mat-card>
+    </div>
+    <div class="overview-column">
+        <mat-card class="pie-chart-card" id="piechart-card">
+            <mat-card-subtitle>NCEA Overview</mat-card-subtitle>
+            <canvas id="piechart-example" height="100" width="100"></canvas>
+          </mat-card>
+          <mat-card>
+              <mat-card-subtitle>Homework Notice from your Teacher</mat-card-subtitle>
+              <p>Hi class, Mr Person here. Just a reminder that your English homework is due next Monday.</p>
+          </mat-card>
+          <!-- <mat-card>
+            <mat-card-subtitle>Test</mat-card-subtitle>
+            <img mat-card-img src="http://www.cornerstone.ac.nz/wp/wp-content/gallery/2019-tribe-performances/IMG_4449.JPG">
+          </mat-card> -->
+          <mat-card class="example-card">
+            <div mat-card-avatar class="example-header-image" matTooltip="Mr Teacher Man" matTooltipPosition="after"></div>
+            <mat-card-subtitle class="card-title">Tribe Performances</mat-card-subtitle>
+            <img mat-card-image src="http://www.cornerstone.ac.nz/wp/wp-content/gallery/2019-tribe-performances/IMG_4449.JPG" alt="Photo of a Shiba Inu">
+            <mat-card-content>
+              <p>
+                Congratulations to the winners of the Tribe Performances 2019!<br />
+                Placings:<br />
+                  Singing:
+                  <br />1st: Asher
+                  <br />2nd: Zebulun
+                  <br />3rd Equal: Issachar
+                  <br />3rd Equal: Naphtali
+                  <br /><br />
+                  Acting:
+                  <br />1st: Issachar
+                  <br />2nd: Asher
+                  <br />3rd: Zebulun
+                  <br />4th: Naphtali
+              </p>
+            </mat-card-content>
+            <mat-card-actions>
+              <button mat-button mat-raised-button color="primary" class="button button-primary" class="like-button" (click)="addLikeTwo()"><i class="fas fa-thumbs-up"></i></button>
+              <p class="like-counter">{{ likeCountTwo }}</p>
+            </mat-card-actions>
+            <p class="date">26th July 2016</p>
+          </mat-card>
+    </div>
+        
+  </div>
 </div>

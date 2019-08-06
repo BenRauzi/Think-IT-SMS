@@ -11,12 +11,12 @@ export class NoticesService {
 
     constructor(private http: HttpClient) {}
 
-    write(title: string, information: string) {
+    write(title: string, information: string, enddate: string) {
         const options = { headers: new HttpHeaders({
                 'Content-Type': 'application/json'
         })};
         // tslint:disable-next-line: max-line-length
-        return this.http.post(`${API_URL}/api/notices`, { title, information}, options);
+        return this.http.post(`${API_URL}/api/notices`, { title, information, enddate }, options);
     }
 
     read() {

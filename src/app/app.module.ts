@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule, MatInputModule, MatFormFieldModule, MatCardModule, MatSelectModule, MatOptionModule, MatSnackBarModule, MatTableModule, MatProgressSpinnerModule, MatPaginatorModule, MAT_DIALOG_DEFAULT_OPTIONS, MatDialogRef, MatDialogModule, MatSliderModule, MatAutocompleteModule, MatRadioModule, MatMenuModule, MatButtonToggleModule, MatSortModule, MatChipsModule, MatIconModule, MatSlideToggleModule } from '@angular/material';
+import { MatButtonModule, MatInputModule, MatFormFieldModule, MatCardModule, MatSelectModule, MatOptionModule, MatSnackBarModule, MatTableModule, MatProgressSpinnerModule, MatPaginatorModule, MAT_DIALOG_DEFAULT_OPTIONS, MatDialogRef, MatDialogModule, MatSliderModule, MatAutocompleteModule, MatRadioModule, MatMenuModule, MatButtonToggleModule, MatSortModule, MatChipsModule, MatIconModule, MatSlideToggleModule, MatGridListModule, MatTooltipModule, MatDatepickerModule, MatNativeDateModule } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AuthGuard, RoleGuard } from '../guards';
@@ -23,6 +23,7 @@ import { StudentDetailsEditTestComponent } from './student-details-edit-test/stu
 import { NavigationComponent, ConfirmBoxDialog } from './navigation/navigation.component';
 import { SearchComponent, yearDialog, classDialog, subjectDialog } from './search/search.component';
 import {FormControl} from '@angular/forms';
+import { NceaService } from 'src/services/nceaService';
 
 @NgModule({
   declarations: [
@@ -70,7 +71,11 @@ import {FormControl} from '@angular/forms';
     MatSortModule,
     MatChipsModule,
     MatIconModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatGridListModule,
+    MatTooltipModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [
     {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}},
@@ -80,8 +85,10 @@ import {FormControl} from '@angular/forms';
     NoticesService,
     DetailsService,
     DebugService,
+    NceaService,
     AuthGuard,
     RoleGuard,
+    MatNativeDateModule,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: JwtInterceptor,

@@ -48,7 +48,7 @@ header{
     font-size: 18px;
     color: white;
     text-align: center;
-    z-index: 1;
+    z-index: 2;
     .avatar{
         :before{
             content: "";
@@ -131,7 +131,7 @@ header{
     height: 100%; 
     width: 0; 
     position: fixed; 
-    z-index: 1; 
+    z-index: 3; 
     top: 50px; 
     left: 5;
     margin-left: 210px;

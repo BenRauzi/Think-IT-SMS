@@ -3,12 +3,17 @@ h3 {
     color: #8c8c8c;
 }
 div {
-    margin-left: 30%;
+    margin-left: 15%;
     width:400px;
     word-wrap: break-word;
     background-color: #fcfcfc;
     padding-bottom:8px;
     border-radius: 6px;
+    form{
+        div{
+            box-shadow: 3px 3px 3px rgba(0,0,0, 0.2);
+        }
+    }
     #title {
         width:70%;
     };

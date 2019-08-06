@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { invoke } from 'q';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { NoticesService } from 'src/services';
+import { NoticesService, AuthService } from 'src/services';
 import { MatSnackBar, MAT_DIALOG_DATA, MatDialogRef, MatDialog, MatTableDataSource } from '@angular/material';
 import { BaseModel, Notice } from 'src/models';
 import { Router } from '@angular/router';
@@ -20,10 +20,11 @@ export class AddNoticeComponent implements OnInit {
   form: FormGroup;
   
 // tslint:disable-next-line: max-line-length
-  constructor(public dialog: MatDialog, private fb: FormBuilder, private notices: NoticesService, private snackBar: MatSnackBar, private router: Router) {
+  constructor(private auth: AuthService, public dialog: MatDialog, private fb: FormBuilder, private notices: NoticesService, private snackBar: MatSnackBar, private router: Router) {
     this.form = this.fb.group({
       title: ['',[Validators.required, Validators.maxLength(50)]],
-      information: ['',[Validators.required, Validators.maxLength(500)]]
+      information: ['',[Validators.required, Validators.maxLength(500)]],
+      enddate: ['']
   });
   }
 
@@ -37,8 +38,8 @@ export class AddNoticeComponent implements OnInit {
     500);
   }
 
-  addNotice(val: {title: string, information: string}) {
-    this.notices.write(val.title, val.information).subscribe((data: BaseModel) => {
+  addNotice(val: {title: string, information: string, enddate: string}) {
+    this.notices.write(val.title, val.information, val.enddate).subscribe((data: BaseModel) => {
       if (data['status'] === 401) {
         this.router.navigate(['/login']);
       } else {
@@ -73,12 +74,17 @@ export class AddNoticeComponent implements OnInit {
 
   openDialog(): void {
     const val = this.form.value;
+    if(val.enddate == ''){
+      val.enddate = new Date(new Date().setDate(new Date().getDate() + 7));
+      // val.enddate = new Date(new Date().setSeconds(new Date().getSeconds() + 30)); //! for testing deleting notices (30 seconds until delete)
+    }
+    val.enddate = val.enddate.toJSON();
     if(val.title.length <= 50 && val.information.length <= 500){
       // tslint:disable-next-line: no-use-before-declare
       const dialogRef = this.dialog.open(AddNoticeConfirmBoxDialog, {
         width: '600px',
         height: '400px',
-        data: {notice: ['xxxxxxx', this.form.value.title, this.form.value.information, 'Teacher Name']}
+        data: {notice: [this.form.value.title, this.form.value.information, this.form.value.enddate, localStorage.getItem('pt-username')]}
       });
 
       dialogRef.afterClosed().subscribe(result => {
@@ -116,14 +122,16 @@ export class AddNoticeConfirmBoxDialog {
 
   dataSource = new MatTableDataSource<Notice>([]);
   displayedColumns: string[] = ['title', 'information', 'teacher'];
+  time: string;
 
   constructor(
     public dialogRef: MatDialogRef<AddNoticeConfirmBoxDialog>,
     @Inject(MAT_DIALOG_DATA) public data: AddNoticeDialogData) {}
 
   ngOnInit(): void {
-    console.log(this.data.notice);
     this.dataSource.data = [this.data.notice];
+    const date = new Date(this.data.notice[2]);
+    this.time = date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear();
   }
   onNoClick(): void {
     this.dialogRef.close();
