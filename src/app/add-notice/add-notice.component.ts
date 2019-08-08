@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { invoke } from 'q';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { NoticesService, AuthService } from 'src/services';
 import { MatSnackBar, MAT_DIALOG_DATA, MatDialogRef, MatDialog, MatTableDataSource } from '@angular/material';
 import { BaseModel, Notice } from 'src/models';
@@ -18,29 +18,29 @@ export interface AddNoticeDialogData {
 })
 export class AddNoticeComponent implements OnInit {
   form: FormGroup;
-  
+
 // tslint:disable-next-line: max-line-length
   constructor(private auth: AuthService, public dialog: MatDialog, private fb: FormBuilder, private notices: NoticesService, private snackBar: MatSnackBar, private router: Router) {
     this.form = this.fb.group({
-      title: ['',[Validators.required, Validators.maxLength(50)]],
-      information: ['',[Validators.required, Validators.maxLength(500)]],
-      enddate: ['']
-  });
+      title: ['', [Validators.required, Validators.maxLength(50)]],
+      information: ['', [Validators.required, Validators.maxLength(500)]],
+      enddate: new FormControl(new Date(new Date().setDate(new Date().getDate() + 7)))
+    });
   }
 
   ngOnInit() {
-    setTimeout(() => 
+    setTimeout(() =>
     {
       this.snackBar.open('Image will be replaced momentarily', 'Ok', {
         duration: 5000,
-      })
+      });
     },
     500);
   }
 
   addNotice(val: {title: string, information: string, enddate: string}) {
     this.notices.write(val.title, val.information, val.enddate).subscribe((data: BaseModel) => {
-      if (data['status'] === 401) {
+      if (data.status === 401) {
         this.router.navigate(['/login']);
       } else {
         this.snackBar.open('Notice created Successfully', 'Ok', {
@@ -63,23 +63,19 @@ export class AddNoticeComponent implements OnInit {
   }
 
   closeNav() {
-    if ( document.getElementById("sideNav").style.width != "") {
-      document.getElementById("sideNav").style.width = "0";
-      document.getElementById("main").style.marginLeft = "0%";
+    if ( document.getElementById('sideNav').style.width != '') {
+      document.getElementById('sideNav').style.width = '0';
+      document.getElementById('main').style.marginLeft = '0%';
       try {
-        document.getElementById("ribbon").style.marginLeft = "0%";
-      } catch(err) {}
+        document.getElementById('ribbon').style.marginLeft = '0%';
+      } catch (err) {}
     }
   }
 
   openDialog(): void {
     const val = this.form.value;
-    if(val.enddate == ''){
-      val.enddate = new Date(new Date().setDate(new Date().getDate() + 7));
-      // val.enddate = new Date(new Date().setSeconds(new Date().getSeconds() + 30)); //! for testing deleting notices (30 seconds until delete)
-    }
-    val.enddate = val.enddate.toJSON();
-    if(val.title.length <= 50 && val.information.length <= 500){
+    val.enddate = new Date(val.enddate.setHours(17, 0, 0, 0)).toJSON();
+    if (val.title.length <= 50 && val.information.length <= 500) {
       // tslint:disable-next-line: no-use-before-declare
       const dialogRef = this.dialog.open(AddNoticeConfirmBoxDialog, {
         width: '600px',
@@ -94,11 +90,11 @@ export class AddNoticeComponent implements OnInit {
         }
       });
     } else {
-      if(val.title.length > 50 && val.information.length > 500){
+      if (val.title.length > 50 && val.information.length > 500) {
         this.snackBar.open('Title and Description are too long!', 'Ok', {
           duration: 5000
         });
-      } else if(val.title.length > 50){
+      } else if (val.title.length > 50) {
         this.snackBar.open('Title is too long!', 'Ok', {
           duration: 5000
         });
@@ -131,7 +127,9 @@ export class AddNoticeConfirmBoxDialog {
   ngOnInit(): void {
     this.dataSource.data = [this.data.notice];
     const date = new Date(this.data.notice[2]);
-    this.time = date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear();
+    this.time = date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear() + ' at ';
+    // tslint:disable-next-line: max-line-length
+    this.time = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()} at ${date.getHours() >= 13 ? date.getHours() - 12 : date.getHours()}:${date.getMinutes() < 10 ? '0' + date.getMinutes().toString() : date.getMinutes()}${date.getHours() >= 13 ? 'PM' : 'AM'}`;
   }
   onNoClick(): void {
     this.dialogRef.close();

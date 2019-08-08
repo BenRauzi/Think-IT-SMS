@@ -70,7 +70,7 @@
             </mat-card>
     </div>
     <div class="overview-column">
-        <mat-card class="pie-chart-card" id="piechart-card">
+        <mat-card class="pie-chart-card" id="piechart-card" *ngIf="this.auth.user.role === 'Student'">
             <mat-card-subtitle>NCEA Overview</mat-card-subtitle>
             <canvas id="piechart-example" height="100" width="100"></canvas>
           </mat-card>

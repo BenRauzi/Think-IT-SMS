@@ -5,6 +5,7 @@ import { UserModel, Notice, NceaCreditsModel } from 'src/models';
 import { MatPaginator, MatTableDataSource } from '@angular/material';
 import Chart from 'chart.js';
 import { NceaService } from 'src/services/nceaService';
+import { UserDto } from 'src/dto';
 
 @Component({
   selector: 'app-dashboard',
@@ -33,7 +34,7 @@ export class DashboardComponent implements OnInit {
 
   likeCountOne = 1;
   likeCountTwo = 0;
-  ngOnInit() {
+  async ngOnInit() {
     this.checkPermission();
     if (this.auth.user.username == 'undefined') {
         this.auth.user.username = localStorage.getItem('pt-username');
@@ -44,12 +45,18 @@ export class DashboardComponent implements OnInit {
       console.log(data);
       this.dataSource.data = data.reverse();
     });
-    if (this.auth.user.role === 'Student') {
-      this.generatePieChart();
-    } else {
-      document.getElementById('piechart-card').style.display = 'none';
+    if (!this.auth.user.role) {
+      this.auth.updateRole().subscribe((data: UserDto) => {
+          this.auth.user = data;
+          if(this.auth.user.role === 'Student'){
+            this.generatePieChart();
+          }
+      });
     }
-  }
+    if(this.auth.user.role === 'Student'){
+      this.generatePieChart();
+    }
+}
 
   addLikeOne() {
     this.likeCountOne += 1;
